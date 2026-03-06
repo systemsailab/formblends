@@ -1,28 +1,47 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { categories } from "@/data/products";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [promoVisible, setPromoVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
+    <header className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md transition-shadow duration-300 ${scrolled ? "shadow-sm" : ""}`}>
       {/* Top bar */}
-      <div className="bg-brand-700 text-white text-center text-sm py-2 px-4">
-        <p>
-          Free shipping on orders over $150 | All products third-party tested
-          for 99%+ purity{" "}
-          <Link href="/products" className="underline font-medium ml-1">
-            Shop Now
-          </Link>
-        </p>
-      </div>
+      {promoVisible && (
+        <div className="bg-gray-950 text-gray-300 text-center text-xs py-1.5 px-4 relative">
+          <p className="tracking-wide">
+            Free shipping on orders over $150 &nbsp;|&nbsp; All products third-party tested
+            for 99%+ purity{" "}
+            <Link href="/products" className="text-white underline underline-offset-2 font-medium ml-1 hover:text-gray-200 transition-colors">
+              Shop Now
+            </Link>
+          </p>
+          <button
+            onClick={() => setPromoVisible(false)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors"
+            aria-label="Dismiss"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      )}
 
       <nav className="container-wide mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-14 lg:h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
             <div className="w-10 h-10 bg-gradient-to-br from-brand-500 to-brand-700 rounded-xl flex items-center justify-center">
@@ -106,12 +125,6 @@ export function Header() {
             </div>
 
             <Link
-              href="/articles"
-              className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
-            >
-              Articles
-            </Link>
-            <Link
               href="/science"
               className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
             >
@@ -122,12 +135,6 @@ export function Header() {
               className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
             >
               Reviews
-            </Link>
-            <Link
-              href="/about"
-              className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
-            >
-              About
             </Link>
           </div>
 
@@ -173,10 +180,8 @@ export function Header() {
                   {cat.name}
                 </Link>
               ))}
-              <Link href="/articles" className="text-base text-gray-700 py-2" onClick={() => setMobileOpen(false)}>Articles</Link>
               <Link href="/science" className="text-base text-gray-700 py-2" onClick={() => setMobileOpen(false)}>Science</Link>
               <Link href="/reviews" className="text-base text-gray-700 py-2" onClick={() => setMobileOpen(false)}>Reviews</Link>
-              <Link href="/about" className="text-base text-gray-700 py-2" onClick={() => setMobileOpen(false)}>About</Link>
               <Link href="/products" className="btn-primary text-center mt-2" onClick={() => setMobileOpen(false)}>
                 Shop Now
               </Link>

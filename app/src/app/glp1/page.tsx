@@ -31,7 +31,7 @@ export default function GLP1Page() {
               </span>
             </div>
 
-            <h1 className="text-5xl lg:text-7xl font-bold text-white leading-[1.05]">
+            <h1 className="text-5xl lg:text-7xl font-bold text-white leading-[1.05] font-serif tracking-headline">
               Stop Fighting<br />
               Your Biology.<br />
               <span className="text-brand-300">Start Working With It.</span>
@@ -78,7 +78,7 @@ export default function GLP1Page() {
               <span className="text-brand-600 font-semibold text-sm uppercase tracking-wider">
                 Understanding GLP-1
               </span>
-              <h2 className="mt-3 text-4xl font-bold text-gray-900">
+              <h2 className="mt-3 text-4xl font-bold text-gray-900 font-serif tracking-headline">
                 What Are GLP-1 Peptides?
               </h2>
               <p className="mt-6 text-lg text-gray-600 leading-relaxed">
@@ -136,7 +136,7 @@ export default function GLP1Page() {
             <span className="text-brand-600 font-semibold text-sm uppercase tracking-wider">
               Our GLP-1 Products
             </span>
-            <h2 className="mt-3 text-4xl lg:text-5xl font-bold text-gray-900">
+            <h2 className="mt-3 text-4xl lg:text-5xl font-bold text-gray-900 font-serif tracking-headline">
               Choose Your GLP-1 Compound
             </h2>
             <p className="mt-4 text-xl text-gray-500 max-w-3xl mx-auto">
@@ -156,11 +156,11 @@ export default function GLP1Page() {
       {/* Comparison Table */}
       <section id="science" className="section-padding bg-white">
         <div className="container-wide mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center font-serif tracking-headline">
             GLP-1 Compound Comparison
           </h2>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto rounded-2xl border border-gray-200">
             <table className="w-full min-w-[600px]">
               <thead>
                 <tr className="border-b-2 border-gray-200">
@@ -213,14 +213,14 @@ export default function GLP1Page() {
             <span className="text-brand-400 font-semibold text-sm uppercase tracking-wider">
               Real Results
             </span>
-            <h2 className="mt-3 text-4xl lg:text-5xl font-bold">
+            <h2 className="mt-3 text-4xl lg:text-5xl font-bold font-serif tracking-headline">
               GLP-1 Success Stories
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {testimonials.slice(0, 6).map((t) => (
-              <div key={t.id} className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
+              <div key={t.id} className="bg-gray-900 rounded-2xl p-6 border border-gray-800 hover:border-brand-800 transition-all duration-500 group">
                 {t.videoId && (
                   <div className="relative aspect-video bg-gray-800 rounded-xl mb-4 overflow-hidden">
                     <Image src={t.avatar} alt={t.name} fill className="object-cover opacity-60 group-hover:opacity-80 transition-opacity" />
@@ -259,7 +259,7 @@ export default function GLP1Page() {
       {/* CTA */}
       <section className="section-padding bg-gradient-to-r from-brand-600 to-brand-800 text-white text-center">
         <div className="container-wide mx-auto">
-          <h2 className="text-4xl lg:text-5xl font-bold">Ready to Start?</h2>
+          <h2 className="text-4xl lg:text-5xl font-bold font-serif tracking-headline">Ready to Start?</h2>
           <p className="mt-4 text-xl text-brand-100 max-w-2xl mx-auto">
             Choose your GLP-1 compound and begin your transformation today.
             Free shipping on orders over $150.

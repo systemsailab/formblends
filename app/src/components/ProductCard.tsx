@@ -8,7 +8,7 @@ export function ProductCard({ product, featured = false }: { product: Product; f
   return (
     <Link
       href={`/products/${product.slug}`}
-      className={`group bg-white rounded-2xl border border-gray-100 hover:border-brand-200 transition-all duration-500 overflow-hidden flex flex-col hover:shadow-2xl hover:-translate-y-1 ${featured ? "lg:col-span-2 lg:flex-row" : ""}`}
+      className={`group bg-white rounded-2xl border border-gray-100 hover:border-brand-200 transition-all duration-500 overflow-hidden flex flex-col hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.12)] hover:-translate-y-1 ${featured ? "lg:col-span-2 lg:flex-row" : ""}`}
     >
       {/* Image area */}
       <div className={`relative bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden ${featured ? "lg:w-1/2 aspect-[4/3]" : "aspect-square"}`}>

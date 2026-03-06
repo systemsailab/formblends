@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ProductCard } from "@/components/ProductCard";
 import { StarRating } from "@/components/StarRating";
+import { MediaLogos } from "@/components/MediaLogos";
 import { getGlp1Products, getFeaturedProducts, getBestsellers, categories } from "@/data/products";
 import { getVideoTestimonials, getWeightLossTestimonials, testimonials } from "@/data/testimonials";
 import { formatPrice, formatNumber } from "@/lib/utils";
@@ -42,10 +43,10 @@ export default function Home() {
               <div className="flex items-center gap-1">
                 <StarRating rating={5} size="sm" />
               </div>
-              <span className="text-white/80 text-sm">12,847 verified reviews</span>
+              <span className="text-white/80 text-sm font-medium">12,847 verified reviews</span>
             </div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-white">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-headline text-white font-serif">
               Lose Weight<br />
               <span className="text-brand-400">With Science.</span><br />
               Not Willpower.
@@ -94,7 +95,7 @@ export default function Home() {
       </section>
 
       {/* ===== TRUST BAR ===== */}
-      <section className="bg-white border-b border-gray-100 py-8">
+      <section className="bg-white border-b border-gray-100 py-6">
         <div className="container-wide mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-14">
             {[
@@ -115,6 +116,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== MEDIA LOGOS ===== */}
+      <MediaLogos />
+
       {/* ===== GLP-1 SPOTLIGHT ===== */}
       <section className="section-padding bg-white">
         <div className="container-wide mx-auto">
@@ -124,7 +128,7 @@ export default function Home() {
               GLP-1 Weight Loss
               <span className="w-8 h-px bg-brand-600" />
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 font-serif">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 font-serif tracking-headline">
               The Science of Effortless Weight Loss
             </h2>
             <p className="mt-4 text-xl text-gray-500 max-w-3xl mx-auto">
@@ -150,7 +154,7 @@ export default function Home() {
             <div className="relative p-8 lg:p-16">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h3 className="text-3xl lg:text-4xl font-bold text-white font-serif">
+                  <h3 className="text-3xl lg:text-4xl font-bold text-white font-serif tracking-headline">
                     How GLP-1 Peptides Work
                   </h3>
                   <div className="mt-8 space-y-6">
@@ -204,7 +208,7 @@ export default function Home() {
               Real Results
               <span className="w-8 h-px bg-brand-400" />
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold font-serif">
+            <h2 className="text-4xl lg:text-5xl font-bold font-serif tracking-headline">
               Life-Changing Transformations
             </h2>
             <p className="mt-4 text-xl text-gray-400 max-w-2xl mx-auto">
@@ -289,7 +293,7 @@ export default function Home() {
                 Full Catalog
                 <span className="w-8 h-px bg-brand-600" />
               </span>
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 font-serif">
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 font-serif tracking-headline">
                 Beyond Weight Loss
               </h2>
               <p className="mt-3 text-lg text-gray-500 max-w-2xl">
@@ -340,7 +344,7 @@ export default function Home() {
                   Quality Guarantee
                   <span className="w-8 h-px bg-brand-400" />
                 </span>
-                <h2 className="text-4xl lg:text-5xl font-bold text-white font-serif">
+                <h2 className="text-4xl lg:text-5xl font-bold text-white font-serif tracking-headline">
                   Pharmaceutical-Grade<br />Purity. Every Batch.
                 </h2>
                 <p className="mt-6 text-lg text-gray-300 leading-relaxed">
@@ -421,7 +425,7 @@ export default function Home() {
               Customer Stories
               <span className="w-8 h-px bg-brand-600" />
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 font-serif">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 font-serif tracking-headline">
               In Their Own Words
             </h2>
           </div>
@@ -446,7 +450,7 @@ export default function Home() {
             {weightLossTestimonials.slice(0, 4).map((t) => (
               <div
                 key={t.id}
-                className="rounded-2xl p-8 border border-gray-100 bg-white hover:shadow-xl transition-shadow duration-500"
+                className="rounded-2xl p-8 border border-gray-100 bg-white hover:shadow-[0_24px_48px_-12px_rgba(0,0,0,0.1)] hover:border-brand-100 hover:-translate-y-1 transition-all duration-500"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-1.5">
@@ -488,7 +492,7 @@ export default function Home() {
               Simple Process
               <span className="w-8 h-px bg-brand-600" />
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 font-serif">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 font-serif tracking-headline">
               How FormBlends Works
             </h2>
           </div>
@@ -522,7 +526,7 @@ export default function Home() {
       <section className="section-padding bg-white">
         <div className="container-wide mx-auto max-w-4xl">
           <div className="text-center mb-14">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 font-serif">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 font-serif tracking-headline">
               Frequently Asked Questions
             </h2>
           </div>
@@ -566,7 +570,7 @@ export default function Home() {
 
         <div className="relative py-24 lg:py-32 px-4 text-center">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl lg:text-6xl font-bold text-white font-serif">
+            <h2 className="text-4xl lg:text-6xl font-bold text-white font-serif tracking-headline">
               Your Transformation<br />Starts Today
             </h2>
             <p className="mt-6 text-xl text-brand-100 max-w-2xl mx-auto">
