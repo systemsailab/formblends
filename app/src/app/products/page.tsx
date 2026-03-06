@@ -7,12 +7,13 @@ export const metadata = {
   description: "Browse our complete catalog of pharmaceutical-grade peptides. GLP-1 weight loss, recovery, performance, anti-aging, and more. 99%+ purity, third-party tested.",
 };
 
-export default function ProductsPage({
+export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams: { category?: string };
+  searchParams: Promise<{ category?: string }>;
 }) {
-  const activeCategory = searchParams.category;
+  const { category } = await searchParams;
+  const activeCategory = category;
   const filtered = activeCategory
     ? products.filter((p) => p.categorySlug === activeCategory)
     : products;
