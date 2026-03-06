@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getGlp1Products } from "@/data/products";
 import { getWeightLossTestimonials } from "@/data/testimonials";
 import { ProductCard } from "@/components/ProductCard";
@@ -18,11 +19,8 @@ export default function GLP1Page() {
     <div className="pt-28">
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-900 via-brand-800 to-gray-900" />
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-brand-400 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent-400 rounded-full blur-3xl" />
-        </div>
+        <Image src="/images/hero/hero-woman.jpg" alt="" fill className="object-cover" priority />
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-950/70 to-gray-950/40" />
 
         <div className="relative container-wide mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
           <div className="max-w-3xl">
@@ -224,11 +222,15 @@ export default function GLP1Page() {
             {testimonials.slice(0, 6).map((t) => (
               <div key={t.id} className="bg-gray-900 rounded-2xl p-6 border border-gray-800">
                 {t.videoId && (
-                  <div className="relative aspect-video bg-gray-800 rounded-xl mb-4 flex items-center justify-center">
-                    <div className="w-14 h-14 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">
-                      <svg className="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
+                  <div className="relative aspect-video bg-gray-800 rounded-xl mb-4 overflow-hidden">
+                    <Image src={t.avatar} alt={t.name} fill className="object-cover opacity-60 group-hover:opacity-80 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-14 h-14 bg-white/20 backdrop-blur rounded-full flex items-center justify-center">
+                        <svg className="w-6 h-6 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
                     </div>
                     {t.weightLost && (
                       <div className="absolute bottom-3 left-3 bg-brand-600 text-white px-3 py-1 rounded-full text-sm font-bold">
@@ -240,8 +242,8 @@ export default function GLP1Page() {
                 <StarRating rating={t.rating} />
                 <p className="text-gray-300 mt-3 leading-relaxed">&ldquo;{t.quote}&rdquo;</p>
                 <div className="mt-4 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-400 to-brand-700 flex items-center justify-center text-white font-bold text-sm">
-                    {t.name[0]}
+                  <div className="w-10 h-10 rounded-full overflow-hidden relative shrink-0">
+                    <Image src={t.avatar} alt={t.name} fill className="object-cover" />
                   </div>
                   <div>
                     <p className="text-white font-semibold text-sm">{t.name}</p>

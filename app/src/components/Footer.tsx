@@ -76,11 +76,12 @@ export function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Resources</h3>
             <ul className="space-y-2.5">
+              <li><Link href="/articles" className="text-sm text-gray-400 hover:text-white transition-colors">All Articles</Link></li>
+              <li><Link href="/articles/glp1-hub" className="text-sm text-gray-400 hover:text-white transition-colors">GLP-1 Guides</Link></li>
+              <li><Link href="/articles/peptide-hub" className="text-sm text-gray-400 hover:text-white transition-colors">Peptide Guides</Link></li>
+              <li><Link href="/articles/comparison-hub" className="text-sm text-gray-400 hover:text-white transition-colors">Provider Comparisons</Link></li>
               <li><Link href="/science" className="text-sm text-gray-400 hover:text-white transition-colors">Science & Research</Link></li>
               <li><Link href="/reviews" className="text-sm text-gray-400 hover:text-white transition-colors">Customer Reviews</Link></li>
-              <li><Link href="/about" className="text-sm text-gray-400 hover:text-white transition-colors">About FormBlends</Link></li>
-              <li><Link href="/faq" className="text-sm text-gray-400 hover:text-white transition-colors">FAQ</Link></li>
-              <li><Link href="/blog" className="text-sm text-gray-400 hover:text-white transition-colors">Blog</Link></li>
             </ul>
           </div>
 

@@ -106,6 +106,12 @@ export function Header() {
             </div>
 
             <Link
+              href="/articles"
+              className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+            >
+              Articles
+            </Link>
+            <Link
               href="/science"
               className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
             >
@@ -167,6 +173,7 @@ export function Header() {
                   {cat.name}
                 </Link>
               ))}
+              <Link href="/articles" className="text-base text-gray-700 py-2" onClick={() => setMobileOpen(false)}>Articles</Link>
               <Link href="/science" className="text-base text-gray-700 py-2" onClick={() => setMobileOpen(false)}>Science</Link>
               <Link href="/reviews" className="text-base text-gray-700 py-2" onClick={() => setMobileOpen(false)}>Reviews</Link>
               <Link href="/about" className="text-base text-gray-700 py-2" onClick={() => setMobileOpen(false)}>About</Link>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { products, getProductBySlug, getProductsByCategory } from "@/data/products";
 import { getTestimonialsByProduct } from "@/data/testimonials";
@@ -53,17 +54,25 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           {/* Product Image */}
           <div className="relative">
             <div className="sticky top-32">
-              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl aspect-square flex items-center justify-center p-12">
+              <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl aspect-square overflow-hidden">
                 {product.badge && (
-                  <span className="absolute top-6 left-6 bg-brand-600 text-white text-sm font-bold px-4 py-2 rounded-full">
+                  <span className="absolute top-6 left-6 bg-brand-600 text-white text-sm font-bold px-4 py-2 rounded-full z-10 shadow-md">
                     {product.badge}
                   </span>
                 )}
-                <div className="w-48 h-48 lg:w-64 lg:h-64 bg-gradient-to-br from-brand-300 to-brand-600 rounded-3xl flex items-center justify-center shadow-2xl">
-                  <span className="text-white font-bold text-6xl lg:text-8xl">
-                    {product.name[0]}
+                {product.originalPrice && (
+                  <span className="absolute top-6 right-6 bg-red-500 text-white text-sm font-bold px-4 py-2 rounded-full z-10 shadow-md">
+                    Save {calculateSavings(product.originalPrice, product.price)}%
                   </span>
-                </div>
+                )}
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
 
               {/* Trust badges under image */}
@@ -236,8 +245,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                   )}
                   <p className="text-gray-700 leading-relaxed">&ldquo;{r.longQuote}&rdquo;</p>
                   <div className="mt-4 flex items-center gap-3 pt-3 border-t border-gray-100">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-400 to-brand-700 flex items-center justify-center text-white font-bold text-sm">
-                      {r.name[0]}
+                    <div className="w-10 h-10 rounded-full overflow-hidden relative shrink-0">
+                      <Image src={r.avatar} alt={r.name} fill className="object-cover" />
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900 text-sm">{r.name}, {r.age}</p>

@@ -1,0 +1,41 @@
+# Form Blends
+
+> Form Blends is a physician-supervised telehealth clinic specializing in GLP-1 weight loss medications (semaglutide, tirzepatide) and therapeutic peptides. We provide medical consultations, prescriptions, and ongoing care through a secure telehealth platform.
+
+## Main Sections
+
+- [GLP-1 Weight Loss](/glp1): Semaglutide and tirzepatide programs with physician oversight
+- [Products](/products): Full catalog of pharmaceutical-grade peptides
+- [Science](/science): Clinical research backing our treatments
+- [Articles](/articles): 8,000+ evidence-based health articles
+
+## Article Categories
+
+- [GLP-1 Articles](/articles/glp1-hub): Semaglutide, tirzepatide, Wegovy, Ozempic guides (2,100+ articles)
+- [Peptide Therapy](/articles/peptide-hub): BPC-157, TB-500, GHK-Cu, and 20+ peptides (1,800+ articles)
+- [Provider Comparisons](/articles/comparison-hub): Side-by-side reviews of telehealth weight loss programs (800+ articles)
+- [Telehealth by City](/articles/local-seo): City-specific weight loss and peptide therapy availability (1,100+ articles)
+- [Retatrutide](/articles/retatrutide-hub): Eli Lilly's triple agonist clinical trials and research (500+ articles)
+- [Quick Answers](/articles/aeo-hub): Fast answers to common GLP-1 and peptide questions (1,000+ articles)
+- [Lifestyle & Wellness](/articles/lifestyle-hub): Nutrition, exercise, and health optimization (480+ articles)
+- [Biohacking](/articles/biohacking-hub): Mitochondrial health, CGMs, supplements, longevity (300+ articles)
+
+## Key Topics
+
+- Semaglutide for weight loss: dosing, side effects, results, costs
+- Tirzepatide for weight loss: Mounjaro, Zepbound, comparisons
+- Retatrutide: triple agonist mechanism, clinical trial results, FDA timeline
+- Peptide therapy: BPC-157 for healing, GHK-Cu for skin, CJC-1295 for growth hormone
+- Telehealth weight loss: online prescriptions, provider comparisons, insurance coverage
+- GLP-1 side effects: nausea management, hair loss, muscle preservation
+
+## About Form Blends
+
+- Licensed physicians prescribe all medications after individual medical evaluation
+- Telehealth consultations available nationwide
+- Medications ship directly to patients with temperature-controlled packaging
+- Ongoing medical oversight with dose adjustments and follow-up care
+
+## Optional
+
+- [Full article index](/llms-full.txt): Complete listing of all 8,000+ articles with descriptions

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
   title: "About FormBlends | Pharmaceutical-Grade Peptides",
@@ -24,6 +25,12 @@ export default function AboutPage() {
             they are getting.
           </p>
         </div>
+      </section>
+
+      {/* Lab Image Banner */}
+      <section className="relative h-64 lg:h-80 overflow-hidden">
+        <Image src="/images/hero/lab-quality.jpg" alt="FormBlends laboratory" fill className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-50 to-transparent" />
       </section>
 
       {/* Mission */}

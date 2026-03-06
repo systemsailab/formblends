@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { products } from "@/data/products";
 
 export const metadata = {
@@ -174,7 +175,9 @@ export default function SciencePage() {
             </div>
 
             {/* Stats */}
-            <div className="bg-gray-900 text-white rounded-3xl p-8 lg:p-12">
+            <div className="bg-gray-900 text-white rounded-3xl p-8 lg:p-12 relative overflow-hidden">
+              <Image src="/images/hero/lab-quality.jpg" alt="" fill className="object-cover opacity-10" />
+              <div className="relative">
               <h3 className="text-2xl font-bold mb-8">Quality by the Numbers</h3>
               <div className="grid grid-cols-2 gap-6">
                 {[
@@ -190,6 +193,7 @@ export default function SciencePage() {
                     <p className="text-xs text-gray-400 mt-1">{stat.label}</p>
                   </div>
                 ))}
+              </div>
               </div>
             </div>
           </div>

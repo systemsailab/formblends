@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { testimonials } from "@/data/testimonials";
 import { StarRating } from "@/components/StarRating";
 
@@ -64,15 +65,19 @@ export default function ReviewsPage() {
             {testimonials
               .filter((t) => t.videoId)
               .map((t) => (
-                <div key={t.id} className="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800">
-                  <div className="relative aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-white/20 backdrop-blur rounded-full flex items-center justify-center cursor-pointer hover:bg-white/30 transition-colors">
-                      <svg className="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
+                <div key={t.id} className="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800 hover:border-brand-800 transition-all group">
+                  <div className="relative aspect-video bg-gray-900 overflow-hidden">
+                    <Image src={t.avatar} alt={t.name} fill className="object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/40 to-transparent" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center cursor-pointer hover:bg-white/30 hover:scale-110 transition-all border border-white/30">
+                        <svg className="w-7 h-7 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
                     </div>
                     {t.weightLost && (
-                      <div className="absolute bottom-3 left-3 bg-brand-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                      <div className="absolute bottom-3 left-3 bg-brand-600 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg">
                         Lost {t.weightLost}
                       </div>
                     )}
@@ -80,10 +85,15 @@ export default function ReviewsPage() {
                   <div className="p-5">
                     <StarRating rating={t.rating} />
                     <p className="text-gray-300 mt-2 text-sm">&ldquo;{t.quote}&rdquo;</p>
-                    <p className="text-white font-semibold text-sm mt-3">
-                      {t.name}, {t.age} - {t.location}
-                    </p>
-                    <p className="text-gray-500 text-xs">{t.product} | {t.duration}</p>
+                    <div className="mt-3 flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full overflow-hidden relative shrink-0">
+                        <Image src={t.avatar} alt={t.name} fill className="object-cover" />
+                      </div>
+                      <div>
+                        <p className="text-white font-semibold text-sm">{t.name}, {t.age}</p>
+                        <p className="text-gray-500 text-xs">{t.location} | {t.product}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -117,8 +127,8 @@ export default function ReviewsPage() {
                 </p>
 
                 <div className="mt-5 flex items-center gap-3 pt-4 border-t border-gray-200">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-400 to-brand-700 flex items-center justify-center text-white font-bold text-sm">
-                    {t.name[0]}
+                  <div className="w-10 h-10 rounded-full overflow-hidden relative shrink-0">
+                    <Image src={t.avatar} alt={t.name} fill className="object-cover" />
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900 text-sm">

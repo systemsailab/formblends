@@ -40,20 +40,26 @@
 @layer components {
   .btn-primary {
     @apply inline-flex items-center justify-center px-8 py-4 bg-brand-600 text-white font-semibold rounded-full
-           hover:bg-brand-700 transition-all duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5
-           text-base;
+           hover:bg-brand-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5
+           text-base cursor-pointer;
   }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center px-8 py-4 bg-white text-brand-700 font-semibold rounded-full
-           border-2 border-brand-600 hover:bg-brand-50 transition-all duration-200
-           text-base;
+           border-2 border-brand-600 hover:bg-brand-50 transition-all duration-300
+           text-base cursor-pointer;
   }
 
   .btn-dark {
     @apply inline-flex items-center justify-center px-8 py-4 bg-gray-900 text-white font-semibold rounded-full
-           hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl
-           text-base;
+           hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl
+           text-base cursor-pointer;
+  }
+
+  .btn-white {
+    @apply inline-flex items-center justify-center px-8 py-4 bg-white text-gray-900 font-semibold rounded-full
+           hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5
+           text-base cursor-pointer;
   }
 
   .section-padding {
@@ -65,11 +71,11 @@
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-brand-600 to-accent-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent;
   }
 
   .glass-card {
-    @apply bg-white/80 backdrop-blur-xl border border-white/20 rounded-2xl shadow-xl;
+    @apply bg-white/70 backdrop-blur-2xl border border-white/30 rounded-3xl shadow-2xl;
   }
 }
 
@@ -77,19 +83,57 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide scrollbar but keep functionality */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #94a3b8;
-  border-radius: 4px;
+  background: #cbd5e1;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+  background: #94a3b8;
+}
+
+/* Smooth image loading */
+img {
+  transition: opacity 0.3s ease;
+}
+
+/* Animated gradient border */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animated-border {
+  background: linear-gradient(135deg, #22c55e, #3b82f6, #22c55e);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Subtle float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(34, 197, 94, 0.4); }
+}
+
+.pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
 }
