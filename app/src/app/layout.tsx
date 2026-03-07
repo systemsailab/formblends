@@ -3,6 +3,8 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { EmailCapture } from "@/components/EmailCapture";
+import { ExitIntent } from "@/components/ExitIntent";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,6 +32,42 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "FormBlends",
+  url: "https://formblends.com",
+  logo: "https://formblends.com/images/logo.png",
+  description:
+    "Physician-supervised telehealth clinic specializing in GLP-1 weight loss medications and therapeutic peptides.",
+  foundingDate: "2024",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    availableLanguage: "English",
+  },
+  sameAs: [],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "12847",
+    bestRating: "5",
+    worstRating: "1",
+  },
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "FormBlends",
+  url: "https://formblends.com",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://formblends.com/articles?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,10 +75,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <link rel="alternate" type="application/rss+xml" title="Form Blends Articles" href="/feed.xml" />
+      </head>
       <body className="font-sans antialiased bg-white text-gray-900">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
         <Header />
         <main>{children}</main>
         <Footer />
+        <EmailCapture />
+        <ExitIntent />
       </body>
     </html>
   );

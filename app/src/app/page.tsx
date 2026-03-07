@@ -3,9 +3,28 @@ import Image from "next/image";
 import { ProductCard } from "@/components/ProductCard";
 import { StarRating } from "@/components/StarRating";
 import { MediaLogos } from "@/components/MediaLogos";
+import { FadeInOnScroll } from "@/components/FadeInOnScroll";
 import { getGlp1Products, getFeaturedProducts, getBestsellers, categories } from "@/data/products";
 import { getVideoTestimonials, getWeightLossTestimonials, testimonials } from "@/data/testimonials";
 import { formatPrice, formatNumber } from "@/lib/utils";
+
+const homeFaqs = [
+  { q: "What are GLP-1 peptides and how do they work?", a: "GLP-1 (Glucagon-Like Peptide-1) receptor agonists mimic the natural hormone GLP-1. They activate receptors in the brain that control appetite, slow gastric emptying, and improve insulin sensitivity. Major clinical trials demonstrated average weight loss of 15-22.5% of body weight." },
+  { q: "How is FormBlends different from other peptide suppliers?", a: "Every batch undergoes HPLC purity analysis, mass spectrometry verification, endotoxin testing, and sterility testing. We publish certificates of analysis for every product, maintain 99%+ purity standards, and manufacture in ISO 9001:2015 certified facilities." },
+  { q: "How quickly will I see results with GLP-1 peptides?", a: "Most customers report noticeable appetite reduction within the first 1-2 weeks. Measurable weight loss typically begins within 2-4 weeks. Clinical data shows the most significant results over 3-6 months of consistent use." },
+  { q: "Do you offer free shipping?", a: "Yes. All orders over $150 qualify for free priority shipping within the United States. Orders placed before 2pm EST ship same business day. All shipments include temperature-controlled packaging." },
+  { q: "What is your return policy?", a: "We offer a 30-day satisfaction guarantee on all products. If you are not completely satisfied, contact our support team for a full refund or exchange. Unopened products in original packaging qualify for a full refund." },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: homeFaqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: { "@type": "Answer", text: faq.a },
+  })),
+};
 
 export default function Home() {
   const glp1Products = getGlp1Products();
@@ -14,6 +33,8 @@ export default function Home() {
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
       {/* ===== HERO ===== */}
       <section className="relative min-h-[100svh] flex items-center overflow-hidden">
         {/* Background image */}
@@ -122,7 +143,7 @@ export default function Home() {
       {/* ===== GLP-1 SPOTLIGHT ===== */}
       <section className="section-padding bg-white">
         <div className="container-wide mx-auto">
-          <div className="text-center mb-16">
+          <FadeInOnScroll className="text-center mb-16">
             <span className="inline-flex items-center gap-2 text-brand-600 font-semibold text-sm uppercase tracking-widest mb-4">
               <span className="w-8 h-px bg-brand-600" />
               GLP-1 Weight Loss
@@ -135,7 +156,7 @@ export default function Home() {
               GLP-1 receptor agonists mimic your body&apos;s natural satiety hormone, reducing
               appetite at the source. No crash diets. No willpower battles. Just science.
             </p>
-          </div>
+          </FadeInOnScroll>
 
           {/* GLP-1 products */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -202,7 +223,7 @@ export default function Home() {
       {/* ===== VIDEO TESTIMONIALS ===== */}
       <section className="section-padding bg-gray-950 text-white">
         <div className="container-wide mx-auto">
-          <div className="text-center mb-16">
+          <FadeInOnScroll className="text-center mb-16">
             <span className="inline-flex items-center gap-2 text-brand-400 font-semibold text-sm uppercase tracking-widest mb-4">
               <span className="w-8 h-px bg-brand-400" />
               Real Results
@@ -214,7 +235,7 @@ export default function Home() {
             <p className="mt-4 text-xl text-gray-400 max-w-2xl mx-auto">
               Real customers. Verified purchases. Unfiltered stories.
             </p>
-          </div>
+          </FadeInOnScroll>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {weightLossTestimonials.slice(0, 6).map((t) => (
@@ -419,7 +440,7 @@ export default function Home() {
       {/* ===== LONG-FORM REVIEWS ===== */}
       <section className="section-padding bg-white">
         <div className="container-wide mx-auto">
-          <div className="text-center mb-16">
+          <FadeInOnScroll className="text-center mb-16">
             <span className="inline-flex items-center gap-2 text-brand-600 font-semibold text-sm uppercase tracking-widest mb-4">
               <span className="w-8 h-px bg-brand-600" />
               Customer Stories
@@ -428,7 +449,7 @@ export default function Home() {
             <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 font-serif tracking-headline">
               In Their Own Words
             </h2>
-          </div>
+          </FadeInOnScroll>
 
           {/* Aggregate stats */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
@@ -532,13 +553,7 @@ export default function Home() {
           </div>
 
           <div className="space-y-3">
-            {[
-              { q: "What are GLP-1 peptides and how do they work?", a: "GLP-1 (Glucagon-Like Peptide-1) receptor agonists mimic the natural hormone GLP-1. They activate receptors in the brain that control appetite, slow gastric emptying, and improve insulin sensitivity. Major clinical trials demonstrated average weight loss of 15-22.5% of body weight." },
-              { q: "How is FormBlends different from other peptide suppliers?", a: "Every batch undergoes HPLC purity analysis, mass spectrometry verification, endotoxin testing, and sterility testing. We publish certificates of analysis for every product, maintain 99%+ purity standards, and manufacture in ISO 9001:2015 certified facilities." },
-              { q: "How quickly will I see results with GLP-1 peptides?", a: "Most customers report noticeable appetite reduction within the first 1-2 weeks. Measurable weight loss typically begins within 2-4 weeks. Clinical data shows the most significant results over 3-6 months of consistent use." },
-              { q: "Do you offer free shipping?", a: "Yes. All orders over $150 qualify for free priority shipping within the United States. Orders placed before 2pm EST ship same business day. All shipments include temperature-controlled packaging." },
-              { q: "What is your return policy?", a: "We offer a 30-day satisfaction guarantee on all products. If you are not completely satisfied, contact our support team for a full refund or exchange. Unopened products in original packaging qualify for a full refund." },
-            ].map((faq, i) => (
+            {homeFaqs.map((faq, i) => (
               <details
                 key={i}
                 className="group rounded-2xl border border-gray-200 hover:border-brand-200 transition-colors overflow-hidden"

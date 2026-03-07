@@ -6,6 +6,7 @@ import {
   getAllArticleSummaries,
   getRelatedArticles,
   getArticleUrl,
+  resolveInternalLinks,
   HUB_META,
 } from "@/lib/articles";
 
@@ -156,12 +157,13 @@ export default async function ArticlePage({
   const related = getRelatedArticles(hub, slug, 6);
   const hubMeta = HUB_META[hub];
 
-  // Clean placeholders from display HTML
-  const displayHtml = article.html
-    .replace(/\{\{CITE:[^}]+\}\}/g, "")
-    .replace(/\{\{MEDICAL_REVIEW:[^}]+\}\}/g, "")
-    .replace(/\{\{VERIFY_PRICE:[^}]+\}\}/g, "")
-    .replace(/\{\{INTERNAL_LINK:[^}]+\}\}/g, "");
+  // Clean placeholders and resolve internal links
+  const displayHtml = resolveInternalLinks(
+    article.html
+      .replace(/\{\{CITE:[^}]+\}\}/g, "")
+      .replace(/\{\{MEDICAL_REVIEW:[^}]+\}\}/g, "")
+      .replace(/\{\{VERIFY_PRICE:[^}]+\}\}/g, "")
+  );
 
   return (
     <>

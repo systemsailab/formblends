@@ -6,6 +6,7 @@ import { getTestimonialsByProduct } from "@/data/testimonials";
 import { StarRating } from "@/components/StarRating";
 import { ProductCard } from "@/components/ProductCard";
 import { formatPrice, formatNumber, calculateSavings } from "@/lib/utils";
+import { StickyCartBar } from "@/components/StickyCartBar";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -15,9 +16,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) return {};
+  const url = `https://formblends.com/products/${slug}`;
   return {
     title: `${product.name} | FormBlends`,
     description: product.description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${product.name} | FormBlends`,
+      description: product.description,
+      url,
+      type: "website",
+      siteName: "FormBlends",
+    },
   };
 }
 
@@ -31,8 +41,69 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
     .filter((p) => p.slug !== product.slug)
     .slice(0, 4);
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    image: `https://formblends.com${product.image}`,
+    brand: { "@type": "Brand", name: "FormBlends" },
+    manufacturer: { "@type": "Organization", name: "FormBlends" },
+    sku: product.slug,
+    url: `https://formblends.com/products/${product.slug}`,
+    category: product.category,
+    offers: {
+      "@type": "Offer",
+      price: product.price.toFixed(2),
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+      seller: { "@type": "Organization", name: "FormBlends" },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          value: "0",
+          currency: "USD",
+        },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "DAY" },
+          transitTime: { "@type": "QuantitativeValue", minValue: 2, maxValue: 5, unitCode: "DAY" },
+        },
+      },
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: product.rating.toString(),
+      reviewCount: product.reviewCount.toString(),
+      bestRating: "5",
+      worstRating: "1",
+    },
+    review: reviews.slice(0, 5).map((r) => ({
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: r.rating.toString(), bestRating: "5" },
+      author: { "@type": "Person", name: r.name },
+      reviewBody: r.longQuote,
+      datePublished: "2026-03-01",
+    })),
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://formblends.com" },
+      { "@type": "ListItem", position: 2, name: "Products", item: "https://formblends.com/products" },
+      { "@type": "ListItem", position: 3, name: product.category, item: `https://formblends.com/products?category=${product.categorySlug}` },
+      { "@type": "ListItem", position: 4, name: product.name },
+    ],
+  };
+
   return (
     <div className="pt-32">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+
       {/* Breadcrumb */}
       <div className="container-wide mx-auto px-4 sm:px-6 lg:px-8 mb-8">
         <nav className="flex items-center gap-2 text-sm text-gray-400">
@@ -275,6 +346,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
       )}
+      <StickyCartBar productName={product.name} price={product.price} originalPrice={product.originalPrice} />
     </div>
   );
 }

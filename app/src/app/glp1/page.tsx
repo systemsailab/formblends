@@ -9,6 +9,42 @@ import { formatPrice } from "@/lib/utils";
 export const metadata = {
   title: "GLP-1 Weight Loss Peptides | FormBlends",
   description: "Transform your body with pharmaceutical-grade GLP-1 peptides. Semaglutide, Tirzepatide, Liraglutide, and AOD-9604. Clinically proven weight loss up to 22.5%.",
+  alternates: { canonical: "https://formblends.com/glp1" },
+  openGraph: {
+    title: "GLP-1 Weight Loss Peptides | FormBlends",
+    description: "Pharmaceutical-grade GLP-1 peptides clinically proven to deliver up to 22.5% body weight reduction.",
+    url: "https://formblends.com/glp1",
+    type: "website",
+    siteName: "FormBlends",
+  },
+};
+
+const glp1Schema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  name: "GLP-1 Weight Loss Peptides",
+  description: "Physician-supervised GLP-1 weight loss programs with semaglutide and tirzepatide.",
+  url: "https://formblends.com/glp1",
+  datePublished: "2026-03-06",
+  dateModified: "2026-03-06",
+  author: { "@type": "Organization", name: "Form Blends", url: "https://formblends.com" },
+  publisher: { "@type": "Organization", name: "Form Blends", url: "https://formblends.com" },
+  reviewedBy: {
+    "@type": "Person",
+    name: "Dr. Sarah Mitchell, MD",
+    jobTitle: "Medical Director, Obesity Medicine",
+  },
+  medicalAudience: { "@type": "MedicalAudience", audienceType: "Patient" },
+  mainEntityOfPage: { "@type": "WebPage", "@id": "https://formblends.com/glp1" },
+};
+
+const glp1BreadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://formblends.com" },
+    { "@type": "ListItem", position: 2, name: "GLP-1 Weight Loss" },
+  ],
 };
 
 export default function GLP1Page() {
@@ -17,6 +53,9 @@ export default function GLP1Page() {
 
   return (
     <div className="pt-28">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(glp1Schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(glp1BreadcrumbSchema) }} />
+
       {/* Hero */}
       <section className="relative overflow-hidden">
         <Image src="/images/hero/hero-woman.jpg" alt="" fill className="object-cover" priority />

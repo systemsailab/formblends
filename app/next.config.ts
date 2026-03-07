@@ -17,6 +17,9 @@ const nextConfig: NextConfig = {
     "/sitemap.xml": [
       "../content/articles-index.json",
     ],
+    "/feed.xml": [
+      "../content/articles-index.json",
+    ],
   },
 };
 

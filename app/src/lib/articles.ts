@@ -176,3 +176,107 @@ export function getRelatedArticles(hub: string, slug: string, limit = 6): Articl
 export function getArticleUrl(hub: string, slug: string): string {
   return `${SITE_URL}/articles/${hub}/${slug}`;
 }
+
+// Internal link resolution: maps keyword phrases to real URLs
+let _linkMapCache: Map<string, { url: string; title: string }> | null = null;
+
+function buildLinkMap(): Map<string, { url: string; title: string }> {
+  if (_linkMapCache) return _linkMapCache;
+  const map = new Map<string, { url: string; title: string }>();
+
+  // Product links
+  const productLinks: Record<string, string> = {
+    semaglutide: "/products/semaglutide",
+    tirzepatide: "/products/tirzepatide",
+    liraglutide: "/products/liraglutide",
+    "aod-9604": "/products/aod-9604",
+    "bpc-157": "/products/bpc-157",
+    "tb-500": "/products/tb-500",
+    "ghk-cu": "/products/ghk-cu",
+    "cjc-1295": "/products/cjc-1295",
+    "ipamorelin": "/products/ipamorelin",
+    "pt-141": "/products/pt-141",
+    "selank": "/products/selank",
+    "semax": "/products/semax",
+    "thymosin-alpha-1": "/products/thymosin-alpha-1",
+    "epithalon": "/products/epithalon",
+    "mots-c": "/products/mots-c",
+    "ss-31": "/products/ss-31",
+    "dihexa": "/products/dihexa",
+    "kisspeptin-10": "/products/kisspeptin-10",
+    "copper-ghk": "/products/ghk-cu",
+  };
+  for (const [key, url] of Object.entries(productLinks)) {
+    map.set(key, { url, title: key.toUpperCase() });
+  }
+
+  // Key page links
+  const pageLinks: Record<string, { url: string; title: string }> = {
+    "glp-1 medications": { url: "/glp1", title: "GLP-1 medications" },
+    "glp-1 receptor agonist": { url: "/glp1", title: "GLP-1 receptor agonist" },
+    "glp-1 weight loss": { url: "/glp1", title: "GLP-1 weight loss" },
+    "compounded semaglutide": { url: "/products/semaglutide", title: "compounded semaglutide" },
+    "compounded tirzepatide": { url: "/products/tirzepatide", title: "compounded tirzepatide" },
+    "semaglutide side effects": { url: "/articles/glp1-hub/semaglutide-side-effects-complete-guide", title: "semaglutide side effects" },
+    "best online glp-1 providers 2026": { url: "/articles/comparison-hub/best-online-glp1-providers-2026", title: "best online GLP-1 providers 2026" },
+    "best glp-1 programs": { url: "/articles/comparison-hub/best-online-glp1-providers-2026", title: "best GLP-1 programs" },
+    "compounded vs brand name glp-1": { url: "/articles/glp1-hub/compounded-vs-brand-name-glp1", title: "compounded vs. brand name GLP-1" },
+    "form blends programs": { url: "/glp1", title: "Form Blends programs" },
+    "form blends pricing": { url: "/products", title: "Form Blends pricing" },
+    "why choose form blends": { url: "/about", title: "why choose Form Blends" },
+    "switching to form blends": { url: "/glp1", title: "switching to Form Blends" },
+    "wegovy": { url: "/articles/glp1-hub/wegovy-complete-guide", title: "Wegovy" },
+    "zepbound": { url: "/articles/glp1-hub/zepbound-complete-guide", title: "Zepbound" },
+  };
+  for (const [key, val] of Object.entries(pageLinks)) {
+    map.set(key, val);
+  }
+
+  // Build from article index: use slug words as keys
+  const index = loadIndex();
+  for (const article of index) {
+    const slugKey = article.slug.replace(/-/g, " ");
+    if (!map.has(slugKey)) {
+      map.set(slugKey, { url: `/articles/${article.hub}/${article.slug}`, title: article.title });
+    }
+  }
+
+  _linkMapCache = map;
+  return map;
+}
+
+export function resolveInternalLinks(html: string): string {
+  const linkMap = buildLinkMap();
+
+  return html.replace(/\{\{INTERNAL_LINK:([^}]+)\}\}/g, (_match, keyword: string) => {
+    const key = keyword.trim().toLowerCase();
+
+    // Direct match
+    const direct = linkMap.get(key);
+    if (direct) {
+      return `<a href="${direct.url}">${direct.title}</a>`;
+    }
+
+    // Fuzzy: find best matching article slug
+    const keyWords = key.split(/\s+/).filter((w) => w.length > 2);
+    let bestUrl = "";
+    let bestTitle = "";
+    let bestScore = 0;
+    for (const [mapKey, val] of linkMap) {
+      const mapWords = mapKey.split(/\s+/);
+      const overlap = keyWords.filter((w) => mapWords.includes(w)).length;
+      if (overlap > bestScore) {
+        bestScore = overlap;
+        bestUrl = val.url;
+        bestTitle = keyword.trim();
+      }
+    }
+
+    if (bestScore >= 2 && bestUrl) {
+      return `<a href="${bestUrl}">${bestTitle}</a>`;
+    }
+
+    // Fallback: link to products page with the keyword as anchor text
+    return `<a href="/products">${keyword.trim()}</a>`;
+  });
+}

@@ -5,11 +5,45 @@ import { StarRating } from "@/components/StarRating";
 export const metadata = {
   title: "Customer Reviews | FormBlends",
   description: "Read verified reviews from 12,000+ FormBlends customers. Real results with GLP-1 weight loss, recovery peptides, and more.",
+  alternates: { canonical: "https://formblends.com/reviews" },
+  openGraph: {
+    title: "Customer Reviews | FormBlends",
+    description: "Read verified reviews from 12,000+ FormBlends customers.",
+    url: "https://formblends.com/reviews",
+    type: "website",
+    siteName: "FormBlends",
+  },
+};
+
+const reviewsSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Form Blends",
+  url: "https://formblends.com",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "12847",
+    bestRating: "5",
+    worstRating: "1",
+  },
+};
+
+const reviewsBreadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://formblends.com" },
+    { "@type": "ListItem", position: 2, name: "Customer Reviews" },
+  ],
 };
 
 export default function ReviewsPage() {
   return (
     <div className="pt-32">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsBreadcrumbSchema) }} />
+
       {/* Header */}
       <section className="container-wide mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="max-w-3xl">

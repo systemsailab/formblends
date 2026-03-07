@@ -5,6 +5,14 @@ import { products } from "@/data/products";
 export const metadata = {
   title: "Science & Research | FormBlends",
   description: "Explore the clinical research behind FormBlends peptides. Published trials, mechanisms of action, and third-party quality testing.",
+  alternates: { canonical: "https://formblends.com/science" },
+  openGraph: {
+    title: "Science & Research | FormBlends",
+    description: "Explore the clinical research behind FormBlends peptides.",
+    url: "https://formblends.com/science",
+    type: "website",
+    siteName: "FormBlends",
+  },
 };
 
 const clinicalTrials = [
