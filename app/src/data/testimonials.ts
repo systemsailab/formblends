@@ -32,7 +32,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     verified: true,
     videoId: "sora_sarah_001",
-    avatar: "/images/testimonials/sarah.jpg",
+    avatar: "/images/testimonials/sarah.webp",
   },
   {
     id: "t2",
@@ -48,7 +48,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     verified: true,
     videoId: "sora_marcus_001",
-    avatar: "/images/testimonials/marcus.jpg",
+    avatar: "/images/testimonials/marcus.webp",
   },
   {
     id: "t3",
@@ -64,7 +64,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     verified: true,
     videoId: "sora_jennifer_001",
-    avatar: "/images/testimonials/jennifer.jpg",
+    avatar: "/images/testimonials/jennifer.webp",
   },
   {
     id: "t4",
@@ -80,7 +80,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     verified: true,
     videoId: "sora_david_001",
-    avatar: "/images/testimonials/david.jpg",
+    avatar: "/images/testimonials/david.webp",
   },
   {
     id: "t5",
@@ -96,7 +96,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     verified: true,
     videoId: "sora_amanda_001",
-    avatar: "/images/testimonials/amanda.jpg",
+    avatar: "/images/testimonials/amanda.webp",
   },
   {
     id: "t6",
@@ -111,7 +111,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     verified: true,
     videoId: "sora_robert_001",
-    avatar: "/images/testimonials/robert.jpg",
+    avatar: "/images/testimonials/robert.webp",
   },
   {
     id: "t7",
@@ -125,7 +125,7 @@ export const testimonials: Testimonial[] = [
     longQuote: "I work in software engineering and brain fog was killing my productivity. I would stare at code for hours without making progress. A colleague told me about Semax and I decided to try it. The difference was noticeable within the first week. My focus sharpened, I could hold complex problems in my head longer, and my code reviews started getting praise instead of corrections. Two months later, I got promoted to senior engineer. I can not attribute that entirely to Semax, but the cognitive improvement was dramatic and undeniable. FormBlends quality has been consistently excellent.",
     rating: 5,
     verified: true,
-    avatar: "/images/testimonials/lisa.jpg",
+    avatar: "/images/testimonials/lisa.webp",
   },
   {
     id: "t8",
@@ -139,7 +139,7 @@ export const testimonials: Testimonial[] = [
     longQuote: "At 56, I had not slept through the night in years. I would wake up at 2am, 4am, and drag through the next day. My recovery from workouts was terrible and I was losing muscle despite training hard. Three months on CJC-1295/Ipamorelin from FormBlends and the transformation is remarkable. I am sleeping 7-8 hours of deep, uninterrupted sleep. My body composition has shifted visibly. I have more lean muscle, less belly fat, and my recovery time between workouts has been cut in half. My trainer noticed the difference before I even told him what I was taking.",
     rating: 5,
     verified: true,
-    avatar: "/images/testimonials/michael.jpg",
+    avatar: "/images/testimonials/michael.webp",
   },
   {
     id: "t9",
@@ -153,7 +153,7 @@ export const testimonials: Testimonial[] = [
     longQuote: "I have spent thousands on skincare over the years. Retinol, vitamin C serums, professional peels, even considered laser treatments. Then I read the research on GHK-Cu and decided to try the FormBlends topical serum. Eight weeks later, my aesthetician genuinely asked what cosmetic procedure I had done. The fine lines around my eyes have softened dramatically, my skin texture is smoother, and there is a firmness that was not there before. The best part is zero irritation. My retinol always made me peel and get red. This just works quietly and effectively. I have gotten more compliments on my skin in the last two months than in the last two years.",
     rating: 5,
     verified: true,
-    avatar: "/images/testimonials/karen.jpg",
+    avatar: "/images/testimonials/karen.webp",
   },
   {
     id: "t10",
@@ -169,7 +169,7 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     verified: true,
     videoId: "sora_james_001",
-    avatar: "/images/testimonials/james.jpg",
+    avatar: "/images/testimonials/james.webp",
   },
 ];
 

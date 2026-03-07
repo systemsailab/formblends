@@ -40,7 +40,7 @@ export default function Home() {
         {/* Background image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/hero/hero-woman.jpg"
+            src="/images/hero/hero-woman.webp"
             alt="Transform your health with FormBlends"
             fill
             className="object-cover"
@@ -57,7 +57,7 @@ export default function Home() {
               <div className="flex -space-x-1.5">
                 {["sarah", "marcus", "jennifer", "david", "amanda"].map((name) => (
                   <div key={name} className="w-6 h-6 rounded-full border-2 border-white/50 overflow-hidden relative">
-                    <Image src={`/images/testimonials/${name}.jpg`} alt="" fill className="object-cover" />
+                    <Image src={`/images/testimonials/${name}.webp`} alt="" fill className="object-cover" />
                   </div>
                 ))}
               </div>
@@ -168,7 +168,7 @@ export default function Home() {
           {/* How it works visual */}
           <div className="mt-20 relative rounded-3xl overflow-hidden">
             <div className="absolute inset-0">
-              <Image src="/images/hero/hero-products.jpg" alt="FormBlends products" fill className="object-cover" />
+              <Image src="/images/hero/hero-products.webp" alt="FormBlends products" fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-950/80 to-gray-950/70" />
             </div>
 
@@ -352,7 +352,7 @@ export default function Home() {
       {/* ===== QUALITY / TRUST ===== */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/images/hero/lab-quality.jpg" alt="FormBlends quality lab" fill className="object-cover" />
+          <Image src="/images/hero/lab-quality.webp" alt="FormBlends quality lab" fill className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-950/95 to-gray-950/80" />
         </div>
 
@@ -579,7 +579,7 @@ export default function Home() {
       {/* ===== FINAL CTA ===== */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/images/hero/hero-man.jpg" alt="Start your transformation" fill className="object-cover" />
+          <Image src="/images/hero/hero-man.webp" alt="Start your transformation" fill className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-brand-900/90 to-brand-800/80" />
         </div>
 

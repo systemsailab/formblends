@@ -52,7 +52,7 @@ export const products: Product[] = [
       "Well-established safety profile from large-scale trials"
     ],
     scienceNotes: "The STEP 1 trial (N=1,961) showed 14.9% mean body weight reduction vs 2.4% placebo over 68 weeks. The SELECT cardiovascular outcomes trial demonstrated a 20% reduction in major adverse cardiovascular events.",
-    image: "/images/products/semaglutide.jpg",
+    image: "/images/products/semaglutide.webp",
     price: 299,
     originalPrice: 449,
     unit: "5mg vial",
@@ -82,7 +82,7 @@ export const products: Product[] = [
       "Significant reduction in waist circumference"
     ],
     scienceNotes: "SURMOUNT-1 (N=2,539) demonstrated 22.5% mean weight loss at highest dose (15mg) over 72 weeks. 63% of participants achieved 20%+ weight loss vs 1.3% placebo. Also showed 2.24% A1C reduction in diabetic populations.",
-    image: "/images/products/tirzepatide.jpg",
+    image: "/images/products/tirzepatide.webp",
     price: 349,
     originalPrice: 549,
     unit: "5mg vial",
@@ -112,7 +112,7 @@ export const products: Product[] = [
       "Excellent entry point for GLP-1 therapy"
     ],
     scienceNotes: "SCALE Obesity (N=3,731) showed 8.0% mean weight loss vs 2.6% placebo over 56 weeks. 63.2% of participants lost 5%+ body weight. 10-year cardiovascular safety data available from LEADER trial.",
-    image: "/images/products/liraglutide.jpg",
+    image: "/images/products/liraglutide.webp",
     price: 199,
     originalPrice: 299,
     unit: "3mg vial",
@@ -142,7 +142,7 @@ export const products: Product[] = [
       "Synergistic with GLP-1 compounds for enhanced results"
     ],
     scienceNotes: "Phase 2b clinical trial showed significant reduction in body fat in obese subjects over 12 weeks. AOD-9604 received FDA GRAS status (GRN 000620). No adverse effects on glucose tolerance, IGF-1 levels, or bone growth observed.",
-    image: "/images/products/aod-9604.jpg",
+    image: "/images/products/aod-9604.webp",
     price: 89,
     originalPrice: 129,
     unit: "5mg vial",
@@ -174,7 +174,7 @@ export const products: Product[] = [
       "Anti-inflammatory effects without immunosuppression"
     ],
     scienceNotes: "Over 100 peer-reviewed studies demonstrate healing effects. Shown to accelerate Achilles tendon healing by 72% in animal models. Counteracts NSAID-induced GI damage. Upregulates VEGF expression by 3-4x at injury sites.",
-    image: "/images/products/bpc-157.jpg",
+    image: "/images/products/bpc-157.webp",
     price: 54,
     originalPrice: 79,
     unit: "5mg vial",
@@ -204,7 +204,7 @@ export const products: Product[] = [
       "Excellent synergy with BPC-157 for stacking"
     ],
     scienceNotes: "Thymosin Beta-4 shown to reduce infarct size by 40% in cardiac injury models. Promotes corneal wound healing 2.5x faster than controls. Activates cardiac progenitor cells for myocardial repair. Upregulates actin polymerization by 300%.",
-    image: "/images/products/tb-500.jpg",
+    image: "/images/products/tb-500.webp",
     price: 49,
     originalPrice: 69,
     unit: "5mg vial",
@@ -234,7 +234,7 @@ export const products: Product[] = [
       "Cost savings vs purchasing separately"
     ],
     scienceNotes: "Combination therapy studies show 40-60% improvement in healing outcomes vs either peptide alone. Synergistic upregulation of VEGF and actin expression. Dual anti-inflammatory pathway activation (NO system + cytokine modulation).",
-    image: "/images/products/bpc-tb-blend.jpg",
+    image: "/images/products/bpc-tb-blend.webp",
     price: 79,
     originalPrice: 119,
     unit: "10mg vial (5mg each)",
@@ -266,7 +266,7 @@ export const products: Product[] = [
       "Supports fat metabolism and body composition"
     ],
     scienceNotes: "CJC-1295 with DAC shown to elevate IGF-1 levels by 200-300% for 6-11 days after single dose. Ipamorelin produces dose-dependent GH release without cortisol/prolactin elevation. Combination produces synergistic GH amplitude increase of 300-500%.",
-    image: "/images/products/cjc-ipamorelin.jpg",
+    image: "/images/products/cjc-ipamorelin.webp",
     price: 69,
     originalPrice: 99,
     unit: "5mg blend",
@@ -296,7 +296,7 @@ export const products: Product[] = [
       "Increased bone mineral density in clinical trials"
     ],
     scienceNotes: "2-year RCT in elderly (N=65) showed sustained IGF-1 elevation to young-adult levels without tolerance. Increased fat-free mass by 1.6kg. 50% increase in REM and Stage IV sleep. No significant adverse effects on glucose tolerance at 12.5mg dose.",
-    image: "/images/products/mk-677.jpg",
+    image: "/images/products/mk-677.webp",
     price: 79,
     originalPrice: 109,
     unit: "25mg/mL (30mL)",
@@ -326,7 +326,7 @@ export const products: Product[] = [
       "Activates PI3K/Akt growth signaling pathway"
     ],
     scienceNotes: "IGF-1 LR3 has 300% greater potency than native IGF-1 due to reduced IGFBP binding. Half-life extended from ~20 min to 20-30 hours. Promotes satellite cell activation and differentiation in skeletal muscle. Dose-dependent increase in lean mass in animal models.",
-    image: "/images/products/igf-1-lr3.jpg",
+    image: "/images/products/igf-1-lr3.webp",
     price: 119,
     originalPrice: 169,
     unit: "1mg vial",
@@ -356,7 +356,7 @@ export const products: Product[] = [
       "Strong cortisol and prolactin release (acute)"
     ],
     scienceNotes: "Peak GH release 20 min post-administration, 5-7x baseline. Cardioprotective effects shown in ischemia-reperfusion models with 35% reduction in infarct size. Improved left ventricular ejection fraction in post-MI patients (Phase 2, N=30).",
-    image: "/images/products/hexarelin.jpg",
+    image: "/images/products/hexarelin.webp",
     price: 39,
     originalPrice: 59,
     unit: "5mg vial",
@@ -388,7 +388,7 @@ export const products: Product[] = [
       "Over 35 years of published research"
     ],
     scienceNotes: "Increased telomerase activity by 2.4x in human pulmonary fibroblasts. Extended median lifespan by 13.3% in animal models. Clinical trials (N=266 elderly patients) showed improved immune markers, melatonin normalization, and reduced mortality rate over 6-year follow-up.",
-    image: "/images/products/epithalon.jpg",
+    image: "/images/products/epithalon.webp",
     price: 59,
     originalPrice: 89,
     unit: "10mg vial",
@@ -418,7 +418,7 @@ export const products: Product[] = [
       "Neuroprotective effects in preclinical models"
     ],
     scienceNotes: "Broad gene expression study (Iorio et al.) showed GHK resets 4,000+ genes. Clinical trials demonstrate 70% improvement in skin laxity, 35% increase in collagen thickness. Suppresses fibrinogen and inflammatory cytokine expression. Promotes decorin expression for tissue architecture.",
-    image: "/images/products/ghk-cu.jpg",
+    image: "/images/products/ghk-cu.webp",
     price: 34,
     originalPrice: 49,
     unit: "50mg vial",
@@ -448,7 +448,7 @@ export const products: Product[] = [
       "Synergistic with Epithalon for anti-aging protocols"
     ],
     scienceNotes: "NAD+ declines ~50% between ages 40-60. Restoration of NAD+ levels reversed age-related muscle degeneration and extended healthy lifespan by 5% in animal models. SIRT1 activation by NAD+ improves insulin sensitivity and mitochondrial biogenesis.",
-    image: "/images/products/nad-plus.jpg",
+    image: "/images/products/nad-plus.webp",
     price: 89,
     originalPrice: 129,
     unit: "500mg vial",
@@ -480,7 +480,7 @@ export const products: Product[] = [
       "Approved prescription nootropic in Russia since 2011"
     ],
     scienceNotes: "Increases BDNF mRNA expression 3-8x in hippocampus and cortex. Reduced stroke infarct size by 65% in animal models. Improved attention and memory scores in clinical trials (N=80). Modulates TrkB receptor signaling for sustained neuroplasticity.",
-    image: "/images/products/semax.jpg",
+    image: "/images/products/semax.webp",
     price: 44,
     originalPrice: 64,
     unit: "30mg vial",
@@ -510,7 +510,7 @@ export const products: Product[] = [
       "Intranasal delivery for rapid onset"
     ],
     scienceNotes: "Clinical trials showed 2x reduction in HAM-A anxiety scores vs placebo (N=62). No sedation or psychomotor impairment. Stabilizes enkephalinase activity, prolonging endogenous opioid peptide effects. Enhanced IL-6 balance and NK cell activity.",
-    image: "/images/products/selank.jpg",
+    image: "/images/products/selank.webp",
     price: 44,
     originalPrice: 64,
     unit: "30mg vial",
@@ -540,7 +540,7 @@ export const products: Product[] = [
       "Activates HGF/c-Met neurotrophic signaling"
     ],
     scienceNotes: "Reversed scopolamine-induced cognitive deficits at 10^-13 M (10M x more potent than BDNF). Activates HGF/c-Met pathway in neurons. Promotes spinogenesis and synaptogenesis in hippocampal neurons. Orally bioavailable and BBB-permeable.",
-    image: "/images/products/dihexa.jpg",
+    image: "/images/products/dihexa.webp",
     price: 69,
     originalPrice: 99,
     unit: "10mg vial",
@@ -572,7 +572,7 @@ export const products: Product[] = [
       "Supports vaccine response in immunocompromised"
     ],
     scienceNotes: "Approved as Zadaxin in 35+ countries. Meta-analysis of 8 RCTs (N=812) showed improved viral clearance in hepatitis B. Enhanced CD4+/CD8+ ratio and dendritic cell activation. COVID-19 studies showed 60% mortality reduction in critically ill patients (N=76).",
-    image: "/images/products/thymosin-alpha-1.jpg",
+    image: "/images/products/thymosin-alpha-1.webp",
     price: 59,
     originalPrice: 89,
     unit: "5mg vial",
@@ -602,7 +602,7 @@ export const products: Product[] = [
       "Anti-biofilm activity against resistant organisms"
     ],
     scienceNotes: "Minimum inhibitory concentrations of 1-4 ug/mL against S. aureus, E. coli, P. aeruginosa. Neutralizes LPS at nanomolar concentrations. Disrupts established biofilms by 60-80%. Promotes keratinocyte migration for wound closure.",
-    image: "/images/products/ll-37.jpg",
+    image: "/images/products/ll-37.webp",
     price: 69,
     originalPrice: 99,
     unit: "5mg vial",
@@ -632,7 +632,7 @@ export const products: Product[] = [
       "Oral and systemic administration options"
     ],
     scienceNotes: "Reduced colitis disease activity by 60-70% in DSS and TNBS models. Inhibits NF-kB nuclear translocation and MAPK phosphorylation. Preserves claudin and occludin expression (tight junction proteins). Anti-candidal MIC of 16 ug/mL.",
-    image: "/images/products/kpv.jpg",
+    image: "/images/products/kpv.webp",
     price: 44,
     originalPrice: 64,
     unit: "5mg vial",
@@ -664,7 +664,7 @@ export const products: Product[] = [
       "Phospholipid delivery for enhanced penetration"
     ],
     scienceNotes: "Double-blind RCT showed 70% collagen thickness increase vs placebo at 12 weeks. Increased glycosaminoglycan synthesis by 70%. Superior to retinol and vitamin C in head-to-head skin elasticity comparison. No adverse effects reported.",
-    image: "/images/products/ghk-cu-topical.jpg",
+    image: "/images/products/ghk-cu-topical.webp",
     price: 79,
     originalPrice: 119,
     unit: "30mL bottle",
@@ -694,7 +694,7 @@ export const products: Product[] = [
       "Long-lasting results with maintenance dosing"
     ],
     scienceNotes: "Phase 1 trials at University of Arizona demonstrated dose-dependent melanogenesis. Skin reflectance measurements showed significant darkening vs placebo. Eumelanin upregulation confirmed by biopsy. MC1R activation reduces UV-induced DNA damage by 30-50%.",
-    image: "/images/products/melanotan-ii.jpg",
+    image: "/images/products/melanotan-ii.webp",
     price: 29,
     originalPrice: 44,
     unit: "10mg vial",
@@ -726,7 +726,7 @@ export const products: Product[] = [
       "No cardiovascular contraindications like PDE5i"
     ],
     scienceNotes: "FDA approved as Vyleesi (2019) for HSDD. Phase 3 trials (N=1,247 women) showed statistically significant increase in desire and reduction in distress. In male erectile dysfunction studies, produced erections in 33% of PDE5 inhibitor non-responders.",
-    image: "/images/products/pt-141.jpg",
+    image: "/images/products/pt-141.webp",
     price: 34,
     originalPrice: 49,
     unit: "10mg vial",
@@ -758,7 +758,7 @@ export const products: Product[] = [
       "Enhances glymphatic brain waste clearance"
     ],
     scienceNotes: "EEG studies show 20-30% increase in slow-wave sleep duration. Normalizes circadian cortisol rhythm in chronic stress models. No tolerance development over 6-month administration. Reduces sleep onset latency by 40% in insomnia patients.",
-    image: "/images/products/dsip.jpg",
+    image: "/images/products/dsip.webp",
     price: 34,
     originalPrice: 49,
     unit: "5mg vial",

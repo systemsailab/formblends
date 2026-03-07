@@ -37,7 +37,7 @@ export default function AboutPage() {
 
       {/* Lab Image Banner */}
       <section className="relative h-64 lg:h-80 overflow-hidden">
-        <Image src="/images/hero/lab-quality.jpg" alt="FormBlends laboratory" fill className="object-cover" />
+        <Image src="/images/hero/lab-quality.webp" alt="FormBlends laboratory" fill className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-50 to-transparent" />
       </section>
 

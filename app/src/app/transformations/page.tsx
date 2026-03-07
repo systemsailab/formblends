@@ -246,7 +246,7 @@ export default function TransformationsPage() {
                     <div className="flex items-start gap-4 mb-6">
                       <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0 bg-gray-100">
                         <Image
-                          src={`/images/testimonials/${t.slug}.jpg`}
+                          src={`/images/testimonials/${t.slug}.webp`}
                           alt={t.name}
                           fill
                           className="object-cover"

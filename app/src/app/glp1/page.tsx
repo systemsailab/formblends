@@ -58,7 +58,7 @@ export default function GLP1Page() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <Image src="/images/hero/hero-woman.jpg" alt="" fill className="object-cover" priority />
+        <Image src="/images/hero/hero-woman.webp" alt="" fill className="object-cover" priority />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-950/70 to-gray-950/40" />
 
         <div className="relative container-wide mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
