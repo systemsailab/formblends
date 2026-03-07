@@ -18,7 +18,7 @@ export const metadata = {
 const reviewsSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Form Blends",
+  name: "FormBlends",
   url: "https://formblends.com",
   aggregateRating: {
     "@type": "AggregateRating",

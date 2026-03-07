@@ -61,7 +61,7 @@ const clinicalTrials = [
     journal: "The Lancet",
     year: 2023,
     participants: 938,
-    result: "14.7% weight loss with simultaneous 2.24% A1C reduction",
+    result: "14.7% weight loss with simultaneous 2.1% A1C reduction",
     doi: "10.1016/S0140-6736(23)01200-X",
   },
   {
@@ -83,18 +83,18 @@ const clinicalTrials = [
   {
     title: "Tesamorelin Phase 3 - Visceral Fat Reduction",
     journal: "New England Journal of Medicine",
-    year: 2010,
+    year: 2007,
     participants: 816,
     result: "15-18% visceral adipose tissue reduction; FDA-approved as Egrifta",
-    doi: "10.1056/NEJMoa0810076",
+    doi: "10.1056/NEJMoa072375",
   },
   {
     title: "SS-31 (Elamipretide) - Mitochondrial Restoration",
-    journal: "PNAS",
-    year: 2014,
+    journal: "Aging Cell",
+    year: 2013,
     participants: 0,
     result: "Reversed age-related mitochondrial dysfunction within 1 hour; 40-60% ROS reduction",
-    doi: "10.1073/pnas.1412559111",
+    doi: "10.1111/acel.12102",
   },
   {
     title: "Larazotide Phase 2b - Celiac Disease",
@@ -102,22 +102,22 @@ const clinicalTrials = [
     year: 2015,
     participants: 342,
     result: "26% reduction in celiac symptoms vs placebo; tight junction restoration",
-    doi: "10.1053/j.gastro.2015.07.050",
+    doi: "10.1053/j.gastro.2015.02.008",
   },
   {
     title: "Adipotide - Fat-Targeted Apoptotic Peptide in Primates",
     journal: "Science Translational Medicine",
-    year: 2012,
+    year: 2011,
     participants: 0,
     result: "11% body weight loss, 39% abdominal fat reduction in obese rhesus monkeys over 28 days",
-    doi: "10.1126/scitranslmed.3003453",
+    doi: "10.1126/scitranslmed.3002621",
   },
   {
     title: "Epithalamin - Lifespan Extension in Elderly Humans",
     journal: "Bulletin of Experimental Biology and Medicine",
     year: 2003,
     participants: 266,
-    result: "2.0-fold mortality reduction over 6 years; telomerase activation confirmed",
+    result: "1.6-1.8-fold mortality reduction over 6 years; telomerase activation confirmed in vitro",
     doi: "10.1023/A:1024621817505",
   },
   {
@@ -126,7 +126,7 @@ const clinicalTrials = [
     year: 2015,
     participants: 0,
     result: "Prevented diet-induced obesity; improved insulin sensitivity via AMPK activation",
-    doi: "10.1016/j.cmet.2015.02.013",
+    doi: "10.1016/j.cmet.2015.02.009",
   },
 ];
 
@@ -185,7 +185,7 @@ export default function SciencePage() {
                     <p className="text-sm font-medium text-brand-700 mt-1">{trial.result}</p>
                   </div>
                 </div>
-                <p className="mt-4 text-xs text-gray-400">DOI: {trial.doi}</p>
+                <a href={`https://doi.org/${trial.doi}`} target="_blank" rel="noopener noreferrer" className="mt-4 inline-block text-xs text-brand-600 hover:text-brand-700 hover:underline transition-colors">DOI: {trial.doi}</a>
               </div>
             ))}
           </div>

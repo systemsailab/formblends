@@ -107,6 +107,17 @@ export function getArticle(hub: string, slug: string): Article | null {
     html = html.replace(/<\/body>/i, "");
   }
 
+  // Strip H1 from content (template renders its own H1 from metadata)
+  html = html.replace(/<h1[^>]*>[\s\S]*?<\/h1>/gi, "");
+
+  // Strip inline style tags that conflict with site styling
+  html = html.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, "");
+
+  // Strip wrapper divs with class="container" from comparison articles
+  html = html.replace(/<div class="container">/gi, "");
+  // Remove the matching closing div at the end
+  html = html.replace(/<\/div>\s*$/i, "");
+
   // Extract headings for table of contents
   const headings: Article["headings"] = [];
   const headingRegex = /<h([23])[^>]*>(.*?)<\/h\1>/gi;
@@ -269,10 +280,10 @@ function buildLinkMap(): Map<string, { url: string; title: string }> {
     "best online glp-1 providers 2026": { url: "/articles/comparison-hub/best-online-glp1-providers-2026", title: "best online GLP-1 providers 2026" },
     "best glp-1 programs": { url: "/articles/comparison-hub/best-online-glp1-providers-2026", title: "best GLP-1 programs" },
     "compounded vs brand name glp-1": { url: "/articles/glp1-hub/compounded-vs-brand-name-glp1", title: "compounded vs. brand name GLP-1" },
-    "form blends programs": { url: "/glp1", title: "Form Blends programs" },
-    "form blends pricing": { url: "/products", title: "Form Blends pricing" },
-    "why choose form blends": { url: "/about", title: "why choose Form Blends" },
-    "switching to form blends": { url: "/glp1", title: "switching to Form Blends" },
+    "form blends programs": { url: "/glp1", title: "FormBlends programs" },
+    "form blends pricing": { url: "/products", title: "FormBlends pricing" },
+    "why choose form blends": { url: "/about", title: "why choose FormBlends" },
+    "switching to form blends": { url: "/glp1", title: "switching to FormBlends" },
     "wegovy": { url: "/articles/glp1-hub/wegovy-complete-guide", title: "Wegovy" },
     "zepbound": { url: "/articles/glp1-hub/zepbound-complete-guide", title: "Zepbound" },
   };

@@ -35,16 +35,22 @@ export async function generateMetadata({
   const url = getArticleUrl(hub, slug);
   const pageId = `${hub}/${slug}`;
   const ogImage = getOgImage(pageId);
+  const metaTitle = article.title.length > 45
+    ? `${article.title.slice(0, 45).trim()}... | FormBlends`
+    : `${article.title} | FormBlends`;
+  const metaDesc = article.description.length > 155
+    ? `${article.description.slice(0, 152).trim()}...`
+    : article.description;
   return {
-    title: `${article.title} | Form Blends`,
-    description: article.description,
+    title: metaTitle,
+    description: metaDesc,
     alternates: { canonical: url },
     openGraph: {
       title: article.title,
       description: article.description,
       url,
       type: "article",
-      siteName: "Form Blends",
+      siteName: "FormBlends",
       ...(ogImage && { images: [ogImage] }),
     },
     twitter: {
@@ -70,17 +76,17 @@ function buildJsonLd(article: NonNullable<ReturnType<typeof getArticle>>, url: s
     dateModified: "2026-03-06",
     author: {
       "@type": "Organization",
-      name: "Form Blends",
+      name: "FormBlends",
       url: "https://formblends.com",
     },
     publisher: {
       "@type": "Organization",
-      name: "Form Blends",
+      name: "FormBlends",
       url: "https://formblends.com",
     },
     reviewedBy: {
       "@type": "Person",
-      name: "Form Blends Medical Team",
+      name: "FormBlends Medical Team",
       jobTitle: "Physician",
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
@@ -228,11 +234,33 @@ export default async function ArticlePage({
                   </p>
                 )}
                 <div className="mt-4 flex items-center gap-4 text-sm text-gray-400">
-                  <span>Reviewed by Form Blends Medical Team</span>
+                  <span>Reviewed by FormBlends Medical Team</span>
                   <span>|</span>
-                  <span>Updated March 2026</span>
+                  <time dateTime="2026-03-06">Updated March 2026</time>
                 </div>
               </header>
+
+              {/* Mobile TOC */}
+              {article.headings.filter((h) => h.level === 2).length > 3 && (
+                <details className="lg:hidden mb-8 bg-gray-50 rounded-xl border border-gray-100 p-4">
+                  <summary className="text-sm font-bold text-gray-900 cursor-pointer">
+                    In This Article
+                  </summary>
+                  <nav className="mt-3 space-y-2">
+                    {article.headings
+                      .filter((h) => h.level === 2)
+                      .map((h) => (
+                        <a
+                          key={h.id}
+                          href={`#${h.id}`}
+                          className="block text-sm text-gray-500 hover:text-brand-600 transition-colors leading-snug"
+                        >
+                          {h.text}
+                        </a>
+                      ))}
+                  </nav>
+                </details>
+              )}
 
               <div
                 className="article-content prose prose-lg prose-gray max-w-none
@@ -248,6 +276,35 @@ export default async function ArticlePage({
                   prose-td:px-4 prose-td:py-3 prose-td:border-t prose-td:border-gray-100 prose-td:text-sm"
                 dangerouslySetInnerHTML={{ __html: displayHtml }}
               />
+
+              {/* Medical Disclaimer */}
+              <div className="mt-12 p-6 bg-gray-50 rounded-2xl border border-gray-100">
+                <p className="text-xs text-gray-500 leading-relaxed">
+                  <strong className="text-gray-700">Medical Disclaimer:</strong> This
+                  content is for informational purposes only and does not constitute
+                  medical advice. Always consult a qualified healthcare provider before
+                  starting, stopping, or changing any medication or treatment. FormBlends
+                  articles are reviewed by licensed physicians but are not a substitute
+                  for a personal medical consultation.
+                </p>
+              </div>
+
+              {/* Author Box */}
+              <div className="mt-8 p-6 bg-white rounded-2xl border border-gray-100 flex items-start gap-4">
+                <div className="w-12 h-12 bg-brand-100 rounded-full flex items-center justify-center shrink-0">
+                  <svg className="w-6 h-6 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0 1 12 15a9.065 9.065 0 0 0-6.23.693L5 14.5m14.8.8 1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0 1 12 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-bold text-gray-900 text-sm">FormBlends Medical Team</p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    Our articles are written and reviewed by licensed physicians and
+                    clinical researchers with expertise in endocrinology, metabolic
+                    medicine, and peptide therapeutics.
+                  </p>
+                </div>
+              </div>
             </article>
 
             {/* Sidebar: Table of Contents */}
@@ -289,6 +346,20 @@ export default async function ArticlePage({
                 </div>
               </aside>
             )}
+          </div>
+
+          {/* Mobile CTA */}
+          <div className="lg:hidden mt-10 bg-brand-50 rounded-2xl p-6 border border-brand-100 text-center">
+            <p className="font-bold text-gray-900">Ready to get started?</p>
+            <p className="text-sm text-gray-600 mt-1">
+              Physician-supervised GLP-1 and peptide therapy, delivered to your door.
+            </p>
+            <Link
+              href="/glp1"
+              className="mt-4 inline-block text-sm font-semibold bg-brand-600 text-white rounded-full px-8 py-2.5 hover:bg-brand-700 transition-colors"
+            >
+              Start Your Consultation
+            </Link>
           </div>
 
           {/* Related Articles */}

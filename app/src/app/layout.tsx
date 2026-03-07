@@ -79,7 +79,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
-        <link rel="alternate" type="application/rss+xml" title="Form Blends Articles" href="/feed.xml" />
+        <link rel="alternate" type="application/rss+xml" title="FormBlends Articles" href="/feed.xml" />
       </head>
       <body className="font-sans antialiased bg-white text-gray-900">
         <Analytics />

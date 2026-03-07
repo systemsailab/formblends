@@ -20,14 +20,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { hub } = await params;
   const meta = HUB_META[hub];
-  if (!meta) return { title: "Articles | Form Blends" };
+  if (!meta) return { title: "Articles | FormBlends" };
 
   return {
-    title: `${meta.name} Articles | Form Blends`,
+    title: `${meta.name} Articles | FormBlends`,
     description: meta.description,
     alternates: { canonical: `https://formblends.com/articles/${hub}` },
     openGraph: {
-      title: `${meta.name} | Form Blends`,
+      title: `${meta.name} | FormBlends`,
       description: meta.description,
       type: "website",
     },
@@ -46,11 +46,35 @@ export default async function HubPage({
   const articles = getArticlesByHub(hub);
   if (articles.length === 0) notFound();
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://formblends.com" },
+      { "@type": "ListItem", position: 2, name: "Articles", item: "https://formblends.com/articles" },
+      { "@type": "ListItem", position: 3, name: meta.name },
+    ],
+  };
+
+  const collectionSchema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `${meta.name} Articles`,
+    description: meta.description,
+    url: `https://formblends.com/articles/${hub}`,
+    publisher: { "@type": "Organization", name: "FormBlends", url: "https://formblends.com" },
+    numberOfItems: articles.length,
+  };
+
   return (
-    <div className="pt-32 pb-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb */}
-        <nav className="mb-8 text-sm text-gray-500">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
+
+      <div className="pt-32 pb-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Breadcrumb */}
+          <nav className="mb-8 text-sm text-gray-500" aria-label="Breadcrumb">
           <ol className="flex items-center gap-2">
             <li>
               <Link href="/" className="hover:text-brand-600">Home</Link>
@@ -108,5 +132,6 @@ export default async function HubPage({
         </div>
       </div>
     </div>
+    </>
   );
 }

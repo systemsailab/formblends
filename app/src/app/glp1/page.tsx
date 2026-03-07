@@ -27,8 +27,8 @@ const glp1Schema = {
   url: "https://formblends.com/glp1",
   datePublished: "2026-03-06",
   dateModified: "2026-03-06",
-  author: { "@type": "Organization", name: "Form Blends", url: "https://formblends.com" },
-  publisher: { "@type": "Organization", name: "Form Blends", url: "https://formblends.com" },
+  author: { "@type": "Organization", name: "FormBlends", url: "https://formblends.com" },
+  publisher: { "@type": "Organization", name: "FormBlends", url: "https://formblends.com" },
   reviewedBy: {
     "@type": "Person",
     name: "Dr. Sarah Mitchell, MD",
