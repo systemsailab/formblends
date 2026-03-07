@@ -9,6 +9,7 @@ import {
   resolveInternalLinks,
   HUB_META,
 } from "@/lib/articles";
+import { HeroImage, getOgImage, getImageSchema } from "@/components/HeroImage";
 
 export const revalidate = 86400;
 export const dynamicParams = true;
@@ -32,6 +33,8 @@ export async function generateMetadata({
   if (!article) return { title: "Article Not Found" };
 
   const url = getArticleUrl(hub, slug);
+  const pageId = `${hub}/${slug}`;
+  const ogImage = getOgImage(pageId);
   return {
     title: `${article.title} | Form Blends`,
     description: article.description,
@@ -42,16 +45,18 @@ export async function generateMetadata({
       url,
       type: "article",
       siteName: "Form Blends",
+      ...(ogImage && { images: [ogImage] }),
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
       description: article.description,
+      ...(ogImage && { images: [ogImage.url] }),
     },
   };
 }
 
-function buildJsonLd(article: NonNullable<ReturnType<typeof getArticle>>, url: string) {
+function buildJsonLd(article: NonNullable<ReturnType<typeof getArticle>>, url: string, pageId: string) {
   const schemas: Record<string, unknown>[] = [];
 
   // Primary schema: MedicalWebPage or Article
@@ -140,6 +145,12 @@ function buildJsonLd(article: NonNullable<ReturnType<typeof getArticle>>, url: s
     },
   });
 
+  // Image schema from media pipeline
+  const imageSchema = getImageSchema(pageId);
+  if (imageSchema) {
+    schemas.push(imageSchema);
+  }
+
   return schemas;
 }
 
@@ -153,7 +164,8 @@ export default async function ArticlePage({
   if (!article) notFound();
 
   const url = getArticleUrl(hub, slug);
-  const schemas = buildJsonLd(article, url);
+  const pageId = `${hub}/${slug}`;
+  const schemas = buildJsonLd(article, url, pageId);
   const related = getRelatedArticles(hub, slug, 6);
   const hubMeta = HUB_META[hub];
 
@@ -200,6 +212,8 @@ export default async function ArticlePage({
               </li>
             </ol>
           </nav>
+
+          <HeroImage slug={pageId} />
 
           <div className="grid lg:grid-cols-[1fr_280px] gap-12">
             {/* Article body */}
