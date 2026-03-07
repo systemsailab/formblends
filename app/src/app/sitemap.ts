@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getAllArticleSummaries, getArticleHubs, HUB_META } from "@/lib/articles";
+import { products, categories } from "@/data/products";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://formblends.com";
 
@@ -16,6 +17,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${SITE_URL}/articles`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
   ];
+
+  // Product pages
+  const productPages: MetadataRoute.Sitemap = products.map((p) => ({
+    url: `${SITE_URL}/products/${p.slug}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: p.featured ? 0.9 : p.bestseller ? 0.85 : 0.8,
+  }));
 
   // Article hub pages
   const hubPages: MetadataRoute.Sitemap = getArticleHubs().map((hub) => ({
@@ -34,5 +43,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: a.h2Count >= 5 ? 0.7 : 0.6,
   }));
 
-  return [...corePages, ...hubPages, ...articlePages];
+  return [...corePages, ...productPages, ...hubPages, ...articlePages];
 }

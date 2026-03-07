@@ -33,6 +33,14 @@ const clinicalTrials = [
     doi: "10.1056/NEJMoa2206038",
   },
   {
+    title: "Retatrutide Phase 2 - Triple Agonist Obesity Trial",
+    journal: "New England Journal of Medicine",
+    year: 2023,
+    participants: 338,
+    result: "24.2% weight loss at highest dose; 100% achieved 5%+ loss; 82% liver fat reduction",
+    doi: "10.1056/NEJMoa2301972",
+  },
+  {
     title: "SELECT - Semaglutide Cardiovascular Outcomes",
     journal: "New England Journal of Medicine",
     year: 2023,
@@ -49,20 +57,76 @@ const clinicalTrials = [
     doi: "10.1056/NEJMoa1411892",
   },
   {
-    title: "STEP 2 - Semaglutide in Type 2 Diabetes",
-    journal: "The Lancet",
-    year: 2021,
-    participants: 1210,
-    result: "9.6% weight loss + 1.6% A1C reduction in diabetic patients",
-    doi: "10.1016/S0140-6736(21)00213-0",
-  },
-  {
     title: "SURMOUNT-2 - Tirzepatide in T2D with Obesity",
     journal: "The Lancet",
     year: 2023,
     participants: 938,
     result: "14.7% weight loss with simultaneous 2.24% A1C reduction",
     doi: "10.1016/S0140-6736(23)01200-X",
+  },
+  {
+    title: "FOXO4-DRI - Senolytic Peptide in Aged Mice",
+    journal: "Cell",
+    year: 2017,
+    participants: 0,
+    result: "Selective senescent cell elimination; restored fur density, renal function, and fitness",
+    doi: "10.1016/j.cell.2017.02.031",
+  },
+  {
+    title: "AICAR - Exercise Mimetic via AMPK Activation",
+    journal: "Cell",
+    year: 2008,
+    participants: 0,
+    result: "44% endurance increase in sedentary mice without exercise; increased oxidative muscle fibers",
+    doi: "10.1016/j.cell.2008.06.051",
+  },
+  {
+    title: "Tesamorelin Phase 3 - Visceral Fat Reduction",
+    journal: "New England Journal of Medicine",
+    year: 2010,
+    participants: 816,
+    result: "15-18% visceral adipose tissue reduction; FDA-approved as Egrifta",
+    doi: "10.1056/NEJMoa0810076",
+  },
+  {
+    title: "SS-31 (Elamipretide) - Mitochondrial Restoration",
+    journal: "PNAS",
+    year: 2014,
+    participants: 0,
+    result: "Reversed age-related mitochondrial dysfunction within 1 hour; 40-60% ROS reduction",
+    doi: "10.1073/pnas.1412559111",
+  },
+  {
+    title: "Larazotide Phase 2b - Celiac Disease",
+    journal: "Gastroenterology",
+    year: 2015,
+    participants: 342,
+    result: "26% reduction in celiac symptoms vs placebo; tight junction restoration",
+    doi: "10.1053/j.gastro.2015.07.050",
+  },
+  {
+    title: "Adipotide - Fat-Targeted Apoptotic Peptide in Primates",
+    journal: "Science Translational Medicine",
+    year: 2012,
+    participants: 0,
+    result: "11% body weight loss, 39% abdominal fat reduction in obese rhesus monkeys over 28 days",
+    doi: "10.1126/scitranslmed.3003453",
+  },
+  {
+    title: "Epithalamin - Lifespan Extension in Elderly Humans",
+    journal: "Bulletin of Experimental Biology and Medicine",
+    year: 2003,
+    participants: 266,
+    result: "2.0-fold mortality reduction over 6 years; telomerase activation confirmed",
+    doi: "10.1023/A:1024621817505",
+  },
+  {
+    title: "MOTS-c - Mitochondrial Exercise Mimetic",
+    journal: "Cell Metabolism",
+    year: 2015,
+    participants: 0,
+    result: "Prevented diet-induced obesity; improved insulin sensitivity via AMPK activation",
+    doi: "10.1016/j.cmet.2015.02.013",
   },
 ];
 
@@ -92,8 +156,8 @@ export default function SciencePage() {
             Landmark Clinical Trials
           </h2>
           <p className="text-lg text-gray-500 mb-10 max-w-3xl">
-            The GLP-1 class of peptides is backed by some of the largest, most
-            rigorous clinical trials in the history of weight management research.
+            Our peptides are backed by published, peer-reviewed research from
+            leading journals. From large-scale human trials to breakthrough preclinical discoveries.
           </p>
 
           <div className="grid lg:grid-cols-2 gap-6">
@@ -113,7 +177,7 @@ export default function SciencePage() {
                   <div>
                     <p className="text-xs text-gray-400 uppercase tracking-wide">Participants</p>
                     <p className="text-lg font-bold text-gray-900 mt-1">
-                      N={trial.participants.toLocaleString()}
+                      {trial.participants > 0 ? `N=${trial.participants.toLocaleString()}` : "Preclinical"}
                     </p>
                   </div>
                   <div>
@@ -215,7 +279,7 @@ export default function SciencePage() {
             Research by Product
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {products.slice(0, 12).map((p) => (
+            {products.map((p) => (
               <div key={p.slug} className="bg-white rounded-2xl p-6 border border-gray-100">
                 <span className="text-xs font-medium text-brand-600 uppercase tracking-wide">
                   {p.category}

@@ -6,6 +6,8 @@ import { Footer } from "@/components/Footer";
 import { EmailCapture } from "@/components/EmailCapture";
 import { ExitIntent } from "@/components/ExitIntent";
 import { Analytics } from "@/components/Analytics";
+import { CartProvider } from "@/components/CartProvider";
+import { CartDrawer } from "@/components/CartDrawer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -89,11 +91,14 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <EmailCapture />
-        <ExitIntent />
+        <CartProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <CartDrawer />
+          <EmailCapture />
+          <ExitIntent />
+        </CartProvider>
       </body>
     </html>
   );

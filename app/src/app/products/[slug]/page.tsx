@@ -1,12 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { products, getProductBySlug, getProductsByCategory } from "@/data/products";
+import { products, categories, getProductBySlug, getProductsByCategory } from "@/data/products";
 import { getTestimonialsByProduct } from "@/data/testimonials";
 import { StarRating } from "@/components/StarRating";
 import { ProductCard } from "@/components/ProductCard";
 import { formatPrice, formatNumber, calculateSavings } from "@/lib/utils";
 import { StickyCartBar } from "@/components/StickyCartBar";
+import { ProductActions } from "@/components/ProductActions";
+import { getRelatedArticlesForProduct } from "@/lib/product-articles";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -40,6 +42,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
   const related = getProductsByCategory(product.categorySlug)
     .filter((p) => p.slug !== product.slug)
     .slice(0, 4);
+  const relatedArticles = getRelatedArticlesForProduct(product.slug, 4);
+  const categoryInfo = categories.find((c) => c.slug === product.categorySlug);
 
   const productSchema = {
     "@context": "https://schema.org",
@@ -205,14 +209,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             </p>
 
             {/* Add to cart */}
-            <div className="mt-8 space-y-3">
-              <button className="w-full btn-primary !text-lg !py-5">
-                Add to Cart - {formatPrice(product.price)}
-              </button>
-              <button className="w-full btn-secondary">
-                Subscribe & Save 15%
-              </button>
-            </div>
+            <ProductActions
+              price={product.price}
+              shopifyVariantId={product.shopifyVariantId}
+            />
 
             {/* Shipping info */}
             <div className="mt-6 grid grid-cols-2 gap-3">
@@ -247,9 +247,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             {/* Description */}
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">About {product.name}</h2>
-              <div className="prose prose-gray max-w-none">
+              <div className="space-y-4">
                 {product.longDescription.split("\n\n").map((p, i) => (
-                  <p key={i} className="text-gray-600 leading-relaxed mb-4">{p}</p>
+                  <p key={i} className="text-gray-600 leading-[1.8] text-[15px]">{p}</p>
                 ))}
               </div>
             </div>
@@ -259,13 +259,15 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             {/* Benefits */}
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Key Benefits</h2>
-              <div className="grid sm:grid-cols-2 gap-3">
+              <div className="space-y-3">
                 {product.benefits.map((benefit, i) => (
-                  <div key={i} className="flex items-start gap-2">
-                    <svg className="w-5 h-5 text-brand-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-sm text-gray-700">{benefit}</span>
+                  <div key={i} className="flex items-start gap-3 bg-gray-50 rounded-xl p-3">
+                    <div className="w-6 h-6 bg-brand-100 text-brand-600 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-sm text-gray-700 leading-relaxed">{benefit}</span>
                   </div>
                 ))}
               </div>
@@ -281,16 +283,73 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
                 </svg>
                 Published Research
               </h3>
-              <p className="text-sm text-gray-600 mt-3 leading-relaxed">
-                {product.scienceNotes}
-              </p>
-              <Link href="/science" className="text-sm text-accent-600 font-semibold mt-3 inline-flex items-center gap-1 hover:text-accent-700">
+              <div className="mt-3 space-y-2">
+                {product.scienceNotes.split(". ").filter(Boolean).map((sentence, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <span className="text-accent-400 mt-1.5 shrink-0">
+                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3" /></svg>
+                    </span>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {sentence.trim().endsWith(".") ? sentence.trim() : `${sentence.trim()}.`}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <Link href="/science" className="text-sm text-accent-600 font-semibold mt-4 inline-flex items-center gap-1 hover:text-accent-700">
                 View Full Research Library
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </Link>
             </div>
+
+            {/* Related Articles */}
+            {relatedArticles.length > 0 && (
+              <>
+                <hr className="my-8 border-gray-200" />
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">Learn More About {product.name}</h3>
+                  <div className="space-y-2">
+                    {relatedArticles.map((article) => (
+                      <Link
+                        key={`${article.hub}-${article.slug}`}
+                        href={`/articles/${article.hub}/${article.slug}`}
+                        className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-brand-50 hover:border-brand-200 border border-gray-100 transition-colors group"
+                      >
+                        <svg className="w-5 h-5 text-brand-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <span className="text-sm text-gray-700 group-hover:text-brand-700 font-medium leading-snug">{article.title}</span>
+                        <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-500 ml-auto shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </>
+            )}
+
+            {/* Category Link */}
+            {categoryInfo && (
+              <>
+                <hr className="my-8 border-gray-200" />
+                <Link
+                  href={`/products?category=${product.categorySlug}`}
+                  className="flex items-center gap-3 p-4 bg-brand-50 rounded-xl border border-brand-100 hover:border-brand-300 transition-colors group"
+                >
+                  <div>
+                    <p className="text-sm font-bold text-gray-900 group-hover:text-brand-700">
+                      Browse All {categoryInfo.name} Products
+                    </p>
+                    <p className="text-xs text-gray-500 mt-0.5">{categoryInfo.description}</p>
+                  </div>
+                  <svg className="w-5 h-5 text-brand-400 ml-auto shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -346,7 +405,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
       )}
-      <StickyCartBar productName={product.name} price={product.price} originalPrice={product.originalPrice} />
+      <StickyCartBar productName={product.name} price={product.price} originalPrice={product.originalPrice} shopifyVariantId={product.shopifyVariantId} />
     </div>
   );
 }

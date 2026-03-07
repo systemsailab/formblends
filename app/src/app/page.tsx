@@ -318,7 +318,7 @@ export default function Home() {
                 Beyond Weight Loss
               </h2>
               <p className="mt-3 text-lg text-gray-500 max-w-2xl">
-                20+ pharmaceutical-grade peptides across 8 categories. Every product
+                65+ pharmaceutical-grade peptides across 12 categories. Every product
                 third-party tested with published certificates of analysis.
               </p>
             </div>

@@ -1,15 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useCart } from "./CartProvider";
 
 interface StickyCartBarProps {
   productName: string;
   price: number;
   originalPrice?: number;
+  shopifyVariantId?: string;
 }
 
-export function StickyCartBar({ productName, price, originalPrice }: StickyCartBarProps) {
+export function StickyCartBar({ productName, price, originalPrice, shopifyVariantId }: StickyCartBarProps) {
   const [visible, setVisible] = useState(false);
+  const { addToCart, loading } = useCart();
+  const [added, setAdded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +27,13 @@ export function StickyCartBar({ productName, price, originalPrice }: StickyCartB
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleClick = async () => {
+    if (!shopifyVariantId) return;
+    await addToCart(shopifyVariantId);
+    setAdded(true);
+    setTimeout(() => setAdded(false), 2000);
+  };
 
   return (
     <div
@@ -38,8 +49,16 @@ export function StickyCartBar({ productName, price, originalPrice }: StickyCartB
             <span className="line-through text-gray-400 text-sm">${originalPrice.toFixed(2)}</span>
           )}
         </div>
-        <button className="bg-brand-600 text-white font-semibold px-8 py-3 rounded-full hover:bg-brand-700 transition-colors">
-          Add to Cart
+        <button
+          onClick={handleClick}
+          disabled={loading || !shopifyVariantId}
+          className={`font-semibold px-8 py-3 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${
+            added
+              ? "bg-green-600 text-white"
+              : "bg-brand-600 text-white hover:bg-brand-700"
+          }`}
+        >
+          {loading ? "Adding..." : added ? "Added!" : "Add to Cart"}
         </button>
       </div>
     </div>

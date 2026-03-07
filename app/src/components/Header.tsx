@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { categories } from "@/data/products";
 import { DarkModeToggle } from "@/components/DarkModeToggle";
+import { CartButton } from "@/components/CartButton";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -91,8 +92,8 @@ export function Header() {
               </button>
 
               {productsOpen && (
-                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[600px]">
-                  <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 grid grid-cols-2 gap-3">
+                <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[640px]">
+                  <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 grid grid-cols-2 gap-2 max-h-[70vh] overflow-y-auto">
                     {categories.map((cat) => (
                       <Link
                         key={cat.slug}
@@ -142,6 +143,7 @@ export function Header() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <DarkModeToggle />
+            <CartButton />
             <Link
               href="/products"
               className="btn-primary !py-3 !px-6 !text-sm"
@@ -205,6 +207,10 @@ function getCategoryIcon(slug: string) {
     immune: "\uD83D\uDEE1",
     "skin-hair": "\u2728",
     "sexual-wellness": "\uD83D\uDD25",
+    "gut-health": "\uD83E\uDDA0",
+    bioregulators: "\uD83E\uDDEC",
+    metabolic: "\uD83D\uDD25",
+    "sleep-stress": "\uD83C\uDF19",
   };
   return icons[slug] || "\u2022";
 }
