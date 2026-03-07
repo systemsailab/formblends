@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { EmailCapture } from "@/components/EmailCapture";
 import { ExitIntent } from "@/components/ExitIntent";
+import { Analytics } from "@/components/Analytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -79,6 +80,7 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" title="Form Blends Articles" href="/feed.xml" />
       </head>
       <body className="font-sans antialiased bg-white text-gray-900">
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

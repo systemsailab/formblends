@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { categories } from "@/data/products";
+import { DarkModeToggle } from "@/components/DarkModeToggle";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -140,6 +141,7 @@ export function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
+            <DarkModeToggle />
             <Link
               href="/products"
               className="btn-primary !py-3 !px-6 !text-sm"

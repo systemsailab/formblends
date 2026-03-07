@@ -82,6 +82,8 @@ export function Footer() {
               <li><Link href="/articles/comparison-hub" className="text-sm text-gray-400 hover:text-white transition-colors">Provider Comparisons</Link></li>
               <li><Link href="/science" className="text-sm text-gray-400 hover:text-white transition-colors">Science & Research</Link></li>
               <li><Link href="/reviews" className="text-sm text-gray-400 hover:text-white transition-colors">Customer Reviews</Link></li>
+              <li><Link href="/transformations" className="text-sm text-gray-400 hover:text-white transition-colors">Transformations</Link></li>
+              <li><Link href="/calculator" className="text-sm text-gray-400 hover:text-white transition-colors">Dosing Calculator</Link></li>
             </ul>
           </div>
 
