@@ -78,8 +78,8 @@ export default function GLP1Page() {
 
             <p className="mt-6 text-xl text-gray-300 leading-relaxed max-w-2xl">
               GLP-1 peptides work with your body&apos;s natural appetite regulation system,
-              not against it. No extreme diets. No unsustainable willpower. Just science
-              that delivers results.
+              not against it. Take our free 2-minute assessment to find the right
+              compound for your goals.
             </p>
 
             <div className="mt-10 grid grid-cols-3 gap-8 max-w-lg">
@@ -98,13 +98,22 @@ export default function GLP1Page() {
             </div>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <a href="#products" className="btn-primary text-lg !bg-white !text-brand-800 hover:!bg-brand-50">
-                View GLP-1 Products
-              </a>
-              <a href="#science" className="btn-secondary text-lg !border-white/30 !text-white hover:!bg-white/10">
-                See the Science
+              <Link href="/start" className="btn-primary text-lg !bg-white !text-brand-800 hover:!bg-brand-50">
+                Take the Free Assessment
+                <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <a href="#products" className="btn-secondary text-lg !border-white/30 !text-white hover:!bg-white/10">
+                Browse Products
               </a>
             </div>
+            <p className="mt-4 text-sm text-gray-400 flex items-center gap-2">
+              <svg className="w-4 h-4 text-brand-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              2 minutes. Personalized recommendation. No credit card required.
+            </p>
           </div>
         </div>
       </section>

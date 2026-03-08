@@ -68,28 +68,35 @@ export default function Home() {
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-headline text-white font-serif">
-              Lose Weight<br />
-              <span className="text-brand-400">With Science.</span><br />
-              Not Willpower.
+              Your Weight Loss<br />
+              Program,<br />
+              <span className="text-brand-400">Built for You.</span>
             </h1>
 
             <p className="mt-6 text-lg sm:text-xl text-gray-300 leading-relaxed max-w-xl">
-              Pharmaceutical-grade GLP-1 peptides clinically proven to deliver up to
+              Take our free 2-minute assessment and get a personalized GLP-1 plan
+              based on your body, your goals, and your history. Clinically proven to deliver up to
               <strong className="text-white"> 22.5% body weight reduction</strong>.
-              99%+ purity. Third-party tested. Shipped to your door.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link href="/glp1" className="btn-white text-lg !px-10 !py-5 shadow-2xl">
-                Start Your Transformation
+              <Link href="/start" className="btn-white text-lg !px-10 !py-5 shadow-2xl">
+                Take the Free Assessment
                 <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-              <Link href="/science" className="inline-flex items-center justify-center px-10 py-5 text-white font-semibold rounded-full border-2 border-white/30 hover:bg-white/10 transition-all text-lg">
-                See the Research
+              <Link href="/glp1" className="inline-flex items-center justify-center px-10 py-5 text-white font-semibold rounded-full border-2 border-white/30 hover:bg-white/10 transition-all text-lg">
+                Browse GLP-1 Products
               </Link>
             </div>
+
+            <p className="mt-4 text-sm text-gray-400 flex items-center gap-2">
+              <svg className="w-4 h-4 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Takes 2 minutes. No credit card required.
+            </p>
 
             {/* Trust stats */}
             <div className="mt-12 grid grid-cols-3 gap-8">
@@ -523,10 +530,10 @@ export default function Home() {
             <div className="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-px bg-gradient-to-r from-brand-200 via-brand-400 to-brand-200" />
 
             {[
-              { step: "1", title: "Browse & Select", desc: "Choose from 20+ pharmaceutical-grade peptides with detailed science, dosing guidance, and COAs.", icon: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" },
-              { step: "2", title: "Secure Checkout", desc: "Encrypted payment processing. All orders discreetly packaged with temperature-controlled shipping.", icon: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z" },
-              { step: "3", title: "Fast Delivery", desc: "Same-day shipping before 2pm. Free priority shipping on orders over $150. Full tracking provided.", icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" },
-              { step: "4", title: "Transform", desc: "Follow included guidance, track your progress, and experience pharmaceutical-grade results.", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
+              { step: "1", title: "Take the Assessment", desc: "Answer a few questions about your body, goals, and health history. Takes just 2 minutes.", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" },
+              { step: "2", title: "Get Your Plan", desc: "Receive a personalized GLP-1 recommendation based on your BMI, goals, and experience.", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
+              { step: "3", title: "Order & Ship", desc: "Secure checkout with same-day shipping before 2pm. Free priority shipping on orders over $150.", icon: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" },
+              { step: "4", title: "Start Losing Weight", desc: "Most customers see results in 2-4 weeks. Pharmaceutical-grade compounds clinically proven to work.", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
             ].map((item) => (
               <div key={item.step} className="text-center relative">
                 <div className="w-20 h-20 bg-white border-2 border-brand-200 text-brand-600 rounded-full flex items-center justify-center mx-auto mb-5 relative z-10 shadow-md">
@@ -586,15 +593,15 @@ export default function Home() {
         <div className="relative py-24 lg:py-32 px-4 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl lg:text-6xl font-bold text-white font-serif tracking-headline">
-              Your Transformation<br />Starts Today
+              Ready to Start?
             </h2>
             <p className="mt-6 text-xl text-brand-100 max-w-2xl mx-auto">
-              Join 12,000+ customers who have already changed their lives with
-              FormBlends. Pharmaceutical-grade peptides. Clinically proven results.
+              Join 12,000+ customers who have already changed their lives.
+              Take the free assessment and get your personalized plan in 2 minutes.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/glp1" className="btn-white text-lg !px-10 !py-5 shadow-2xl">
-                Start GLP-1 Weight Loss
+              <Link href="/start" className="btn-white text-lg !px-10 !py-5 shadow-2xl">
+                Take the Free Assessment
                 <svg className="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>

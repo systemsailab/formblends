@@ -145,10 +145,10 @@ export function Header() {
             <DarkModeToggle />
             <CartButton />
             <Link
-              href="/products"
+              href="/start"
               className="btn-primary !py-3 !px-6 !text-sm"
             >
-              Shop Now
+              Start Free Assessment
             </Link>
           </div>
 
@@ -186,8 +186,8 @@ export function Header() {
               ))}
               <Link href="/science" className="text-base text-gray-700 py-2" onClick={() => setMobileOpen(false)}>Science</Link>
               <Link href="/reviews" className="text-base text-gray-700 py-2" onClick={() => setMobileOpen(false)}>Reviews</Link>
-              <Link href="/products" className="btn-primary text-center mt-2" onClick={() => setMobileOpen(false)}>
-                Shop Now
+              <Link href="/start" className="btn-primary text-center mt-2" onClick={() => setMobileOpen(false)}>
+                Start Free Assessment
               </Link>
             </div>
           </div>
