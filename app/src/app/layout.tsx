@@ -79,6 +79,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FY7WXGYPQW" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-FY7WXGYPQW');`,
+          }}
+        />
         <link rel="alternate" type="application/rss+xml" title="FormBlends Articles" href="/feed.xml" />
       </head>
       <body className="font-sans antialiased bg-white text-gray-900">
